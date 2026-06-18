@@ -19,8 +19,8 @@
     @keyframes rahBlink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0.12; } }
     @keyframes rahMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes rahScan { from { transform: translateY(-140px); } to { transform: translateY(720px); } }
+    .rah-social-icon { width: 15px; height: 15px; display: inline-block; vertical-align: middle; margin-right: 8px; opacity: 0.9; }
   </style>
-  <script src="image-slot.js"></script>
 </helmet>
 
 <div style="background: #0B0B0C; color: #EDEDEA; font-family: Archivo, sans-serif; min-height: 100vh; overflow-x: hidden;">
@@ -29,15 +29,14 @@
 
   <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(11,11,12,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.09); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em;">
     <div style="display: flex; align-items: center; gap: 14px;">
-      <span style="color: #E2483D; font-weight: 500;">RAH-95</span>
-      <span style="color: #5B5B58;">PORTFOLIO</span>
+      <span style="color: #E2483D; font-weight: 500;">RAH</span>
+      <span style="color: #5B5B58;" data-i18n="nav.portfolio">PORTFOLIO</span>
     </div>
     <nav style="display: flex; align-items: center; gap: 28px;">
-      <a href="#experience" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">EXPERIENCE</a>
-      <a href="#projects" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">PROJECTS</a>
-      <a href="#timeline" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">TIMELINE</a>
-      <a href="#contact" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">CONTACT</a>
-      <a href="Portfolio - Night Editorial.dc.html" style="color: #E2483D; text-decoration: none; letter-spacing: 0.12em; border: 1px solid rgba(226,72,61,0.45); padding: 5px 10px;" style-hover="background: #E2483D; color: #0B0B0C;">VARIATION B ↗</a>
+      <a href="#experience" data-i18n="nav.experience" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">EXPERIENCE</a>
+      <a href="#projects" data-i18n="nav.projects" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">PROJECTS</a>
+      <a href="#timeline" data-i18n="nav.timeline" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">TIMELINE</a>
+      <a href="#contact" data-i18n="nav.contact" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">CONTACT</a>
     </nav>
     <div style="display: flex; align-items: center; gap: 16px;">
       <span id="rah-clock" style="color: #9A9A95;">--:--:--</span>
@@ -45,6 +44,7 @@
         <span style="width: 7px; height: 7px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span>
         LIVE
       </span>
+      <button id="rah-lang" style="background: none; border: 1px solid rgba(255,255,255,0.22); color: #9A9A95; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; padding: 4px 10px; cursor: pointer; transition: color 0.2s, border-color 0.2s;" style-hover="color: #EDEDEA; border-color: rgba(255,255,255,0.5);">EN / ES</button>
     </div>
   </header>
 
@@ -57,17 +57,19 @@
         <span style="display: block; color: #EDEDEA;">Raúl Arcos</span>
         <span style="display: block; color: #E2483D;">Herrera</span>
       </h1>
-      <p data-rh data-rh-delay="160" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.65; color: #B4B4AF; max-width: 54ch; margin: 30px 0 0; text-wrap: pretty;">
+      <p data-rh data-rh-delay="160" data-i18n="hero.bio" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.65; color: #B4B4AF; max-width: 54ch; margin: 30px 0 0; text-wrap: pretty;">
         Software engineer at GTD — Defense &amp; Security, building multi-threaded, mission-critical systems in C++ and Python: computer vision, FPGA pipelines and real-time comms. Off the clock, I build racing software.
       </p>
       <div data-rh data-rh-delay="240" style="transition: border-color 0.3s, background 0.3s; display: grid; gap: 9px; margin-top: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #76766F;">
-        <div>BASE — CÁDIZ, SPAIN · 36.53°N 6.29°W</div>
-        <div>NOW — SOFTWARE ENGINEER @ GTD · SIDE PROJECT: IRCOPILOT.COM</div>
+        <div data-i18n="hero.base">BASE — CÁDIZ, SPAIN · 36.53°N 6.29°W</div>
+        <div data-i18n="hero.now">NOW — SOFTWARE ENGINEER @ GTD · SIDE PROJECT: IRCOPILOT.COM</div>
       </div>
-      <div data-rh data-rh-delay="320" style="transition: border-color 0.3s, background 0.3s; display: flex; gap: 12px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em;">
-        <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 11px 20px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;">GITHUB ↗</a>
-        <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 11px 20px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;">LINKEDIN ↗</a>
-        <a href="/cdn-cgi/l/email-protection#80f2e1f5ece1f2e3eff3e8e5f2f2e5f2e1c0e7ede1e9ecaee3efed" style="color: #0B0B0C; background: #E2483D; text-decoration: none; border: 1px solid #E2483D; padding: 11px 20px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);">EMAIL ME</a>
+      <div data-rh data-rh-delay="320" style="transition: border-color 0.3s, background 0.3s; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em;">
+        <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 10px 18px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-github.svg" class="rah-social-icon" alt="" style="filter: none;"><span data-i18n-social="github">GITHUB</span> ↗</a>
+        <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 10px 18px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-linkedin.svg" class="rah-social-icon" alt="" style="filter: none;"><span data-i18n-social="linkedin">LINKEDIN</span> ↗</a>
+        <a href="https://www.instagram.com/raularcosherrera/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 10px 18px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-instagram.svg" class="rah-social-icon" alt="" style="filter: none;"><span data-i18n-social="instagram">INSTAGRAM</span> ↗</a>
+        <a href="https://members.iracing.com/membersite/member/Home.do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 10px 18px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-iracing.svg" class="rah-social-icon" alt="" style="filter: none;"><span data-i18n-social="iracing">IRACING</span> ↗</a>
+        <a href="/cdn-cgi/l/email-protection#80f2e1f5ece1f2e3eff3e8e5f2f2e5f2e1c0e7ede1e9ecaee3efed" style="display: inline-flex; align-items: center; color: #0B0B0C; background: #E2483D; text-decoration: none; border: 1px solid #E2483D; padding: 10px 18px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);"><span data-i18n="hero.email">EMAIL ME</span></a>
       </div>
     </div>
     <div data-rh data-rh-delay="200" style="transition: border-color 0.3s;">
@@ -83,7 +85,6 @@
         </div>
         <div style="display: flex; justify-content: space-between; padding: 12px 4px 4px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #76766F;">
           <span>RAÚL ARCOS HERRERA</span>
-          <span style="color: #E2483D;">#95</span>
         </div>
       </div>
     </div>
@@ -98,72 +99,72 @@
 
   <section id="experience" data-screen-label="Experience" style="max-width: 1440px; margin: 0 auto; padding: 96px 64px 80px; box-sizing: border-box;">
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; align-items: baseline; gap: 20px; margin-bottom: 44px;">
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">01 — EXPERIENCE</span>
+      <span data-i18n="exp.title" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">01 — EXPERIENCE</span>
       <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.12); align-self: center;"></div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">HISTORY</span>
+      <span data-i18n="exp.sub" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">HISTORY</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; padding: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; border-bottom: 1px solid rgba(255,255,255,0.12);">
-      <span>POS</span><span>ROLE — TEAM</span><span>STINT</span><span style="text-align: right;">LOCATION</span>
+      <span>POS</span><span data-i18n="exp.col.role">ROLE — TEAM</span><span data-i18n="exp.col.stint">STINT</span><span data-i18n="exp.col.loc" style="text-align: right;">LOCATION</span>
     </div>
 
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #E2483D;">01</span>
       <div>
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-          <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;">Software Engineer</span>
-          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #E2483D; border: 1px solid rgba(226,72,61,0.5); padding: 3px 8px; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span>CURRENT</span>
+          <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.01.role">Software Engineer</span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: 0.14em; color: #E2483D; border: 1px solid rgba(226,72,61,0.5); padding: 3px 8px; display: inline-flex; align-items: center; gap: 6px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span><span data-i18n="exp.current">CURRENT</span></span>
         </div>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Multi-threaded critical systems for defense. DDS, WebSockets and serial comms to applied standards; FPGA integration over XDMA; GStreamer video pipelines; computer vision with OpenCV, YOLOv7 and PyTorch. Core contributor on BOX-AI.</p>
+        <p data-i18n="exp.01.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Multi-threaded critical systems for defense. DDS, WebSockets and serial comms to applied standards; FPGA integration over XDMA; GStreamer video pipelines; computer vision with OpenCV, YOLOv7 and PyTorch. Core contributor on BOX-AI.</p>
       </div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">JUN 2023 — NOW</span>
+      <span data-i18n="exp.01.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">JUN 2023 — NOW</span>
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
     <div data-rh data-rh-delay="60" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">02</span>
       <div>
-        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;">Software Technical Consultant</span>
+        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.02.role">Software Technical Consultant</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security · SAMINavantia</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Three-month deployment to Riyadh: on-site technical development assistance, integrations and new development for the HAZEM Lite project.</p>
+        <p data-i18n="exp.02.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Three-month deployment to Riyadh: on-site technical development assistance, integrations and new development for the HAZEM Lite project.</p>
       </div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP — DEC 2025</span>
+      <span data-i18n="exp.02.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP — DEC 2025</span>
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">RIYADH, SA</span>
     </div>
 
     <div data-rh data-rh-delay="120" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">03</span>
       <div>
-        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;">Trainee — Software Engineer</span>
+        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.03.role">Trainee — Software Engineer</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security</div>
       </div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">OCT 2022 — JUN 2023</span>
+      <span data-i18n="exp.03.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">OCT 2022 — JUN 2023</span>
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
     <div data-rh data-rh-delay="180" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">04</span>
       <div>
-        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;">Lead, Electronics Department</span>
+        <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.04.role">Lead, Electronics Department</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">Formula Gades — Formula Student Team</div>
-        <p style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">CAN bus protocol and C++ telemetry software; real-time dashboard; 3D design in 3DEXPERIENCE; design and fabrication of the car's full wiring harness.</p>
+        <p data-i18n="exp.04.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">CAN bus protocol and C++ telemetry software; real-time dashboard; 3D design in 3DEXPERIENCE; design and fabrication of the car's full wiring harness.</p>
       </div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP 2020 — SEP 2022</span>
+      <span data-i18n="exp.04.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP 2020 — SEP 2022</span>
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; gap: 64px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #76766F;">
-      <span>EDU — BSc COMPUTER SCIENCE ENGINEERING · UNIVERSITY OF CÁDIZ · 2018–2024</span>
-      <span>LANG — ES NATIVE · EN C1</span>
+      <span data-i18n="exp.edu">EDU — BSc COMPUTER SCIENCE ENGINEERING · UNIVERSITY OF CÁDIZ · 2018–2024</span>
+      <span data-i18n="exp.lang">LANG — ES NATIVE · EN C1</span>
     </div>
   </section>
 
   <section id="projects" data-screen-label="Projects" style="max-width: 1440px; margin: 0 auto; padding: 32px 64px 96px; box-sizing: border-box;">
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; align-items: baseline; gap: 20px; margin-bottom: 44px;">
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">02 — PROJECTS</span>
+      <span data-i18n="proj.title" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">02 — PROJECTS</span>
       <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.12); align-self: center;"></div>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">PROJECTS</span>
+      <span data-i18n="proj.sub" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">PROJECTS</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
@@ -174,7 +175,7 @@
           <span style="color: #E2483D; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span>LIVE — IRCOPILOT.COM</span>
         </div>
         <h3 style="font-family: Antonio, sans-serif; font-size: 36px; font-weight: 600; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.01em;">iRCopilot</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">An AI race engineer for iRacing you actually talk to — realtime, multilingual voice conversation mid-stint. Shipped as a paid desktop app with backend, payments and web, end to end.</p>
+        <p data-i18n="proj.irc.desc" style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">An AI race engineer for iRacing you actually talk to — realtime, multilingual voice conversation mid-stint. Shipped as a paid desktop app with backend, payments and web, end to end.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #9A9A95;">
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">C#</span>
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">REALTIME LLM</span>
@@ -189,7 +190,7 @@
           <span style="color: #76766F;">OPEN SOURCE</span>
         </div>
         <h3 style="font-family: Antonio, sans-serif; font-size: 36px; font-weight: 600; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.01em;">iRacing Overlays</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">Open-source Python web app that streams live iRacing data into customisable overlays — on screen or in the browser, ready for OBS. Built so new overlays are trivial to add.</p>
+        <p data-i18n="proj.overlays.desc" style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">Open-source Python web app that streams live iRacing data into customisable overlays — on screen or in the browser, ready for OBS. Built so new overlays are trivial to add.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #9A9A95;">
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">PYTHON</span>
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">WEBSOCKETS</span>
@@ -204,7 +205,7 @@
           <span style="color: #76766F;">FORMULA STUDENT</span>
         </div>
         <h3 style="font-family: Antonio, sans-serif; font-size: 36px; font-weight: 600; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.01em;">Live FS Telemetry</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">Formula Gades' first live telemetry and datalogging system: CAN reads from the ECU, an ESP32 pushing MQTT packets over LTE, visualised in a Node-RED web service.</p>
+        <p data-i18n="proj.telemetry.desc" style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">Formula Gades' first live telemetry and datalogging system: CAN reads from the ECU, an ESP32 pushing MQTT packets over LTE, visualised in a Node-RED web service.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #9A9A95;">
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">C++</span>
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">ESP32</span>
@@ -220,7 +221,7 @@
           <span style="color: #76766F;">DEGREE FINAL PROJECT</span>
         </div>
         <h3 style="font-family: Antonio, sans-serif; font-size: 36px; font-weight: 600; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.01em;">Autonomous Robot</h3>
-        <p style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">A ROS-based autonomous differential-drive robot: LIDAR mapping and navigation, YOLOv7 + OpenCV to see and interact with people, and a web interface to watch it think.</p>
+        <p data-i18n="proj.robot.desc" style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">A ROS-based autonomous differential-drive robot: LIDAR mapping and navigation, YOLOv7 + OpenCV to see and interact with people, and a web interface to watch it think.</p>
         <div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: #9A9A95;">
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">ROS</span>
           <span style="border: 1px solid rgba(255,255,255,0.16); padding: 4px 9px;">C++</span>
@@ -237,19 +238,19 @@
     <div style="max-width: 1440px; margin: 0 auto; padding: 96px 64px 104px; box-sizing: border-box;">
 
       <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; align-items: baseline; gap: 20px; margin-bottom: 36px;">
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">03 — STORY</span>
+        <span data-i18n="story.title" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D;">03 — STORY</span>
         <div style="flex: 1; height: 1px; background: rgba(255,255,255,0.12); align-self: center;"></div>
-        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">MY PATH</span>
+        <span data-i18n="story.sub" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">MY PATH</span>
       </div>
 
-      <p data-rh data-rh-delay="80" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.7; color: #B4B4AF; max-width: 58ch; margin: 0 0 80px; text-wrap: pretty;">
+      <p data-rh data-rh-delay="80" data-i18n="story.intro" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.7; color: #B4B4AF; max-width: 58ch; margin: 0 0 80px; text-wrap: pretty;">
         Born in Cádiz. Studied Computer Science because I wanted to understand how things work. Got obsessed with making things fast and precise — first at university, building a real Formula Student car, then writing software for defense systems. In the time left over I build software for sim racing. Here's the full picture.
       </p>
 
       <div style="position: relative;">
         <div style="position: absolute; left: calc(50% - 0.5px); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 6%, rgba(255,255,255,0.1) 94%, transparent); pointer-events: none;"></div>
 
-        <!-- ROW 1: iRCopilot (L, GIF+icon) + GTD current (R, text) -->
+        <!-- ROW 1: iRCopilot (L) + GTD current (R) -->
         <div data-rh style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
@@ -257,51 +258,59 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid #E2483D; border-right: 2px solid #E2483D;"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <image-slot id="tl-irc-gif" shape="rect" placeholder="iRCopilot — demo GIF" style="width: 100%; height: 150px; display: block;"></image-slot>
-              <image-slot id="tl-irc-icon" shape="rounded" radius="12" placeholder="App icon / logo" style="width: 100%; height: 150px; display: block;"></image-slot>
+              <img src="assets/ircopilot.jpeg" alt="iRCopilot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img src="assets/ircopilot2.png" alt="iRCopilot icon" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span>2026 — NOW · PERSONAL PROJECT</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span><span data-i18n="tl.irc.date">2026 — NOW · PERSONAL PROJECT</span></div>
             <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">iRCopilot</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">An AI engineer you actually talk to in realtime during a sim session. Full desktop product with voice, backend and payments — built end to end.</p>
+            <p data-i18n="tl.irc.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">An AI engineer you actually talk to in realtime during a sim session. Full desktop product with voice, backend and payments — built end to end.</p>
             <a href="https://ircopilot.com" target="_blank" rel="noopener" style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #E2483D; text-decoration: none;" style-hover="opacity: 0.7;">IRCOPILOT.COM ↗</a>
           </div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 13px; height: 13px; border-radius: 50%; background: #E2483D; box-shadow: 0 0 14px rgba(226,72,61,0.6); position: relative; z-index: 1;"></div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,0.08); padding: 26px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span>2023 — NOW · FULL-TIME</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span><span data-i18n="tl.gtd.date">2023 — NOW · FULL-TIME</span></div>
             <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">GTD — Defense &amp; Security</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">Software engineer building multi-threaded systems in C++ and Python — computer vision, FPGA pipelines, real-time distributed comms for critical defense applications. Three months on-site in Riyadh in late 2025.</p>
+            <p data-i18n="tl.gtd.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">Software engineer building multi-threaded systems in C++ and Python — computer vision, FPGA pipelines, real-time distributed comms for critical defense applications. Three months on-site in Riyadh in late 2025.</p>
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #5B5B58;">CÁDIZ, SPAIN</div>
           </div>
         </div>
 
-        <!-- ROW 2: 2025 Saudi Arabia (R, text-only) -->
+        <!-- ROW 2: 2025 Saudi Arabia (R) -->
         <div data-rh data-rh-delay="40" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div></div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
-          <div style="border: 1px solid rgba(255,255,255,0.08); padding: 26px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">SEP — DEC 2025 · DEPLOYMENT</div>
+          <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
+            <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+              <img src="assets/riyad2025.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img src="assets/riyad2025-2.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+            </div>
+            <div data-i18n="tl.riyadh.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">SEP — DEC 2025 · DEPLOYMENT</div>
             <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Riyadh, Saudi Arabia</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">Three months on-site at SAMINavantia — technical consulting and development for the HAZEM Lite defense project.</p>
+            <p data-i18n="tl.riyadh.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">Three months on-site at SAMINavantia — technical consulting and development for the HAZEM Lite defense project.</p>
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #5B5B58;">RIYADH, SAUDI ARABIA</div>
           </div>
         </div>
 
-        <!-- ROW 3: 2024 iRacing Overlays (L, 1 image) -->
+        <!-- ROW 3: 2024 iRacing Overlays (L) -->
         <div data-rh data-rh-delay="80" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <image-slot id="tl-overlays" shape="rect" placeholder="iRacing Overlays — screenshot" style="width: 100%; height: 190px; display: block;"></image-slot>
+            <img src="assets/rahoverlay2.gif" alt="iRacing Overlays" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
             <div style="margin-top: 20px;">
-              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 — NOW · OPEN SOURCE</div>
+              <div data-i18n="tl.overlays.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 — NOW · OPEN SOURCE</div>
               <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">iRacing Overlays</h3>
-              <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Open-source Python web app streaming live sim data into customisable on-screen overlays for OBS or the browser.</p>
+              <p data-i18n="tl.overlays.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Open-source Python web app streaming live sim data into customisable on-screen overlays for OBS or the browser.</p>
             </div>
           </div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
@@ -310,7 +319,7 @@
           <div></div>
         </div>
 
-        <!-- ROW 4: 2024 University graduation + TFG robot (R, 2 images) -->
+        <!-- ROW 4: 2024 University graduation + TFG robot (R) -->
         <div data-rh data-rh-delay="120" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div></div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
@@ -322,16 +331,16 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <image-slot id="tl-tfg-robot" shape="rect" placeholder="TFG — autonomous robot photo" style="width: 100%; height: 150px; display: block;"></image-slot>
-              <image-slot id="tl-tfg-grad" shape="rect" placeholder="Graduation photo" style="width: 100%; height: 150px; display: block;"></image-slot>
+              <img src="assets/university2024-2.png" alt="TFG autonomous robot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img src="assets/university2024.jpg" alt="Graduation" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · DEGREE PROJECT + GRADUATION</div>
-            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — end</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Six years, one degree. Final project: an autonomous ROS robot with LIDAR navigation, YOLOv7 detection and a live web interface. BSc Computer Science Engineering.</p>
+            <div data-i18n="tl.univ.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · DEGREE PROJECT + GRADUATION</div>
+            <h3 data-i18n="tl.univ.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — end</h3>
+            <p data-i18n="tl.univ.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Six years, one degree. Final project: an autonomous ROS robot with LIDAR navigation, YOLOv7 detection and a live web interface. BSc Computer Science Engineering.</p>
           </div>
         </div>
 
-        <!-- ROW 5: 2024 Formula Student Spain (L, 2 images) -->
+        <!-- ROW 5: 2024 Formula Student Spain (L) -->
         <div data-rh data-rh-delay="160" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
@@ -339,12 +348,12 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <image-slot id="tl-fs24-1" shape="rect" placeholder="Formula Student Spain 2024 — photo 1" style="width: 100%; height: 150px; display: block;"></image-slot>
-              <image-slot id="tl-fs24-2" shape="rect" placeholder="Formula Student Spain 2024 — photo 2" style="width: 100%; height: 150px; display: block;"></image-slot>
+              <img src="assets/formulagades2024.jpg" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img src="assets/formulagades2024-2.JPG" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · FORMULA STUDENT</div>
-            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Spain</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Gades competed in Spain once more. One of the final events for the team.</p>
+            <div data-i18n="tl.fs24.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · FORMULA STUDENT</div>
+            <h3 data-i18n="tl.fs24.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Spain</h3>
+            <p data-i18n="tl.fs24.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Gades competed in Spain once more. One of the final events for the team.</p>
           </div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
@@ -352,8 +361,22 @@
           <div></div>
         </div>
 
-        <!-- ROW 6: 2022 Formula Student Germany + Spain (R, 2 images) -->
+        <!-- GTD start OCT 2022 (L, text only) -->
         <div data-rh data-rh-delay="200" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div style="border: 1px solid rgba(255,255,255,0.08); padding: 26px;">
+            <div data-i18n="tl.gtd_start.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">OCT 2022 · TRAINEE</div>
+            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">GTD — Defense &amp; Security</h3>
+            <p data-i18n="tl.gtd_start.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">First step into professional software. Joined GTD as a trainee engineer — the beginning of building systems that matter.</p>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #5B5B58; margin-top: 12px;">CÁDIZ, SPAIN</div>
+          </div>
+          <div style="display: flex; justify-content: center; padding-top: 24px;">
+            <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
+          </div>
+          <div></div>
+        </div>
+
+        <!-- FS Spain AUG 2022 (R) -->
+        <div data-rh data-rh-delay="210" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div></div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
@@ -363,30 +386,68 @@
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <image-slot id="tl-fs22-de" shape="rect" placeholder="Germany 2022 — Formula Student" style="width: 100%; height: 150px; display: block;"></image-slot>
-              <image-slot id="tl-fs22-es" shape="rect" placeholder="Spain 2022 — Formula Student" style="width: 100%; height: 150px; display: block;"></image-slot>
+            <img src="assets/formulagades02022-2.jpg" alt="FS Spain 2022" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <div style="margin-top: 20px;">
+              <div data-i18n="tl.fsspain22.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">AUG 2022 · FORMULA STUDENT</div>
+              <h3 data-i18n="tl.fsspain22.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS SPAIN</h3>
+              <p data-i18n="tl.fsspain22.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Student Spain 2022 with Formula Gades. My final year leading the electronics team.</p>
             </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2022 · FORMULA STUDENT</div>
-            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Germany &amp; Spain</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">My final year leading the electronics team. Two events — Germany and Spain — with the Formula Gades car.</p>
           </div>
         </div>
 
-        <!-- ROW 7: 2021 Formula Student Czech Republic + Spain (L, 2 images) -->
+        <!-- FS Germany AUG 2022 (L) -->
+        <div data-rh data-rh-delay="220" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
+            <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <img src="assets/formulagades2022.jpg" alt="FS Germany 2022" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <div style="margin-top: 20px;">
+              <div data-i18n="tl.fsger22.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">AUG 2022 · FORMULA STUDENT</div>
+              <h3 data-i18n="tl.fsger22.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS GERMANY</h3>
+              <p data-i18n="tl.fsger22.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Student Germany 2022 — Hockenheimring. Racing with Formula Gades.</p>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: center; padding-top: 24px;">
+            <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
+          </div>
+          <div></div>
+        </div>
+
+        <!-- FS Spain 2021 (R) -->
+        <div data-rh data-rh-delay="230" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div></div>
+          <div style="display: flex; justify-content: center; padding-top: 24px;">
+            <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
+          </div>
+          <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
+            <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
+            <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
+            <img src="assets/formulagades2021-2.jpg" alt="FS Spain 2021" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <div style="margin-top: 20px;">
+              <div data-i18n="tl.fsspain21.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2021 · FORMULA STUDENT</div>
+              <h3 data-i18n="tl.fsspain21.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS SPAIN</h3>
+              <p data-i18n="tl.fsspain21.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Student Spain 2021. First international season with Formula Gades.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FS Czech Republic 2021 (L) -->
         <div data-rh data-rh-delay="240" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <image-slot id="tl-fs21-cz" shape="rect" placeholder="Czech Republic 2021 — Formula Student" style="width: 100%; height: 150px; display: block;"></image-slot>
-              <image-slot id="tl-fs21-es" shape="rect" placeholder="Spain 2021 — Formula Student" style="width: 100%; height: 150px; display: block;"></image-slot>
+            <img src="assets/formulagades2021.jpg" alt="FS Czech Republic 2021" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <div style="margin-top: 20px;">
+              <div data-i18n="tl.fscz21.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2021 · FORMULA STUDENT</div>
+              <h3 data-i18n="tl.fscz21.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS CZECH REPUBLIC</h3>
+              <p data-i18n="tl.fscz21.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Student Czech Republic 2021 — Brno. First international event for the team.</p>
             </div>
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2021 · FORMULA STUDENT</div>
-            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Czech Republic &amp; Spain</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">First international events. Two Formula Student competitions with the team — Czech Republic and Spain.</p>
           </div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
@@ -394,12 +455,12 @@
           <div></div>
         </div>
 
-        <!-- ROW 8: 2018 University begins (L, text) + Formula Gades begins (R, 1 image) -->
+        <!-- ROW 8: 2018 University begins (L) + Formula Gades begins (R) -->
         <div data-rh data-rh-delay="280" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.08); padding: 26px;">
-            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; margin-bottom: 8px;">2018 — 2024 · EDUCATION</div>
-            <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — start</h3>
-            <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Started BSc Computer Science Engineering. The beginning of everything that followed.</p>
+            <div data-i18n="tl.univ_start.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; margin-bottom: 8px;">2018 — 2024 · EDUCATION</div>
+            <h3 data-i18n="tl.univ_start.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — start</h3>
+            <p data-i18n="tl.univ_start.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Started BSc Computer Science Engineering. The beginning of everything that followed.</p>
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #5B5B58; margin-top: 12px;">CÁDIZ, SPAIN</div>
           </div>
           <div style="display: flex; justify-content: center; padding-top: 24px;">
@@ -410,37 +471,37 @@
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <image-slot id="tl-fg-start" shape="rect" placeholder="Formula Gades — first car or team photo" style="width: 100%; height: 190px; display: block;"></image-slot>
+            <img src="assets/formulagades2018.jpg" alt="Formula Gades 2018" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
             <div style="margin-top: 20px;">
-              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2018 · FORMULA STUDENT</div>
-              <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Formula Gades</h3>
-              <p style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Joined the Formula Student team at university. Started building real cars.</p>
+              <div data-i18n="tl.fg.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2018 · FORMULA STUDENT</div>
+              <h3 data-i18n="tl.fg.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Formula Gades</h3>
+              <p data-i18n="tl.fg.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Joined the Formula Student team at university. Started building real cars.</p>
             </div>
           </div>
         </div>
-
-
 
       </div>
     </div>
   </section>
 
   <section id="contact" data-screen-label="Contact" style="border-top: 1px solid rgba(255,255,255,0.09); padding: 110px 64px 60px; max-width: 1440px; margin: 0 auto; box-sizing: border-box;">
-    <div data-rh style="transition: border-color 0.3s, background 0.3s; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 20px;">04 — CONTACT</div>
+    <div data-rh data-i18n="contact.title" style="transition: border-color 0.3s, background 0.3s; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 20px;">04 — CONTACT</div>
     <h2 data-rh data-rh-delay="80" style="transition: border-color 0.3s, background 0.3s; font-family: Antonio, sans-serif; font-weight: 700; font-size: clamp(72px, 12vw, 168px); line-height: 0.92; margin: 0; text-transform: uppercase;">
-      <span style="color: #EDEDEA;">Let's talk.</span>
+      <span data-i18n="contact.heading" style="color: #EDEDEA;">Let's talk.</span>
     </h2>
-    <p data-rh data-rh-delay="160" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.6; color: #9A9A95; max-width: 50ch; margin: 28px 0 0; text-wrap: pretty;">
+    <p data-rh data-rh-delay="160" data-i18n="contact.desc" style="transition: border-color 0.3s, background 0.3s; font-size: 17px; line-height: 1.6; color: #9A9A95; max-width: 50ch; margin: 28px 0 0; text-wrap: pretty;">
       Got a project, an opportunity, or just want to talk software? Get in touch.
     </p>
-    <div data-rh data-rh-delay="240" style="transition: border-color 0.3s, background 0.3s; display: flex; align-items: center; gap: 14px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.1em;">
-      <a href="/cdn-cgi/l/email-protection#196b786c75786b7a766a717c6b6b7c6b78597e74787075377a7674" style="color: #0B0B0C; background: #E2483D; text-decoration: none; padding: 15px 28px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);"><span class="__cf_email__" data-cfemail="792b382c35382b3a362a313c2b2b3c2b38393e34383035573a3634">[email&#160;protected]</span></a>
-      <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;">GITHUB ↗</a>
-      <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;">LINKEDIN ↗</a>
+    <div data-rh data-rh-delay="240" style="transition: border-color 0.3s, background 0.3s; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.1em;">
+      <a href="/cdn-cgi/l/email-protection#196b786c75786b7a766a717c6b6b7c6b78597e74787075377a7674" style="display: inline-flex; align-items: center; color: #0B0B0C; background: #E2483D; text-decoration: none; padding: 15px 28px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);"><span data-i18n="contact.email">EMAIL ME</span></a>
+      <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-github.svg" style="width:15px;height:15px;" alt="">GITHUB ↗</a>
+      <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-linkedin.svg" style="width:15px;height:15px;" alt="">LINKEDIN ↗</a>
+      <a href="https://www.instagram.com/raularcosherrera/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-instagram.svg" style="width:15px;height:15px;" alt="">INSTAGRAM ↗</a>
+      <a href="https://members.iracing.com/membersite/member/Home.do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-iracing.svg" style="width:15px;height:15px;" alt="">IRACING ↗</a>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 96px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.09); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #5B5B58;">
       <span>© 2026 RAÚL ARCOS HERRERA — CÁDIZ, ES</span>
-      <span>RAH-95</span>
+      <span>RAH</span>
     </div>
   </section>
 
@@ -489,6 +550,22 @@ class Component extends DCLogic {
     };
     requestAnimationFrame(applyAnimations);
     setTimeout(applyAnimations, 250);
+
+    // Language toggle — must be attached here; onclick attr is consumed by dc-runtime as a React string prop
+    const langBtn = document.getElementById('rah-lang');
+    if (langBtn) langBtn.addEventListener('click', () => window.rahToggleLang());
+
+    // i18n — apply stored language on load
+    const stored = localStorage.getItem('rah-lang') || 'en';
+    window.rahApplyLang(stored);
+
+    // Icon hover inversion: icons inside buttons that invert on hover
+    document.querySelectorAll('[style-hover*="color: #0B0B0C"] img').forEach(img => {
+      const btn = img.closest('a');
+      if (!btn) return;
+      btn.addEventListener('mouseenter', () => { img.style.filter = 'invert(1)'; });
+      btn.addEventListener('mouseleave', () => { img.style.filter = 'none'; });
+    });
   }
 
   componentWillUnmount() {
@@ -501,6 +578,182 @@ class Component extends DCLogic {
     return {};
   }
 }
+
+// ── i18n ────────────────────────────────────────────────────────────────────
+const RAH_I18N = {
+  en: {
+    'nav.portfolio': 'PORTFOLIO',
+    'nav.experience': 'EXPERIENCE',
+    'nav.projects': 'PROJECTS',
+    'nav.timeline': 'TIMELINE',
+    'nav.contact': 'CONTACT',
+    'hero.bio': 'Software engineer at GTD — Defense & Security, building multi-threaded, mission-critical systems in C++ and Python: computer vision, FPGA pipelines and real-time comms. Off the clock, I build racing software.',
+    'hero.base': 'BASE — CÁDIZ, SPAIN · 36.53°N 6.29°W',
+    'hero.now': 'NOW — SOFTWARE ENGINEER @ GTD · SIDE PROJECT: IRCOPILOT.COM',
+    'hero.email': 'EMAIL ME',
+    'exp.title': '01 — EXPERIENCE',
+    'exp.sub': 'HISTORY',
+    'exp.col.role': 'ROLE — TEAM',
+    'exp.col.stint': 'STINT',
+    'exp.col.loc': 'LOCATION',
+    'exp.current': 'CURRENT',
+    'exp.01.role': 'Software Engineer',
+    'exp.01.desc': 'Multi-threaded critical systems for defense. DDS, WebSockets and serial comms to applied standards; FPGA integration over XDMA; GStreamer video pipelines; computer vision with OpenCV, YOLOv7 and PyTorch. Core contributor on BOX-AI.',
+    'exp.01.date': 'JUN 2023 — NOW',
+    'exp.02.role': 'Software Technical Consultant',
+    'exp.02.desc': 'Three-month deployment to Riyadh: on-site technical development assistance, integrations and new development for the HAZEM Lite project.',
+    'exp.02.date': 'SEP — DEC 2025',
+    'exp.03.role': 'Trainee — Software Engineer',
+    'exp.03.date': 'OCT 2022 — JUN 2023',
+    'exp.04.role': 'Lead, Electronics Department',
+    'exp.04.desc': "CAN bus protocol and C++ telemetry software; real-time dashboard; 3D design in 3DEXPERIENCE; design and fabrication of the car's full wiring harness.",
+    'exp.04.date': 'SEP 2020 — SEP 2022',
+    'exp.edu': 'EDU — BSc COMPUTER SCIENCE ENGINEERING · UNIVERSITY OF CÁDIZ · 2018–2024',
+    'exp.lang': 'LANG — ES NATIVE · EN C1',
+    'proj.title': '02 — PROJECTS',
+    'proj.sub': 'PROJECTS',
+    'proj.irc.desc': 'An AI race engineer for iRacing you actually talk to — realtime, multilingual voice conversation mid-stint. Shipped as a paid desktop app with backend, payments and web, end to end.',
+    'proj.overlays.desc': 'Open-source Python web app that streams live iRacing data into customisable overlays — on screen or in the browser, ready for OBS. Built so new overlays are trivial to add.',
+    'proj.telemetry.desc': "Formula Gades' first live telemetry and datalogging system: CAN reads from the ECU, an ESP32 pushing MQTT packets over LTE, visualised in a Node-RED web service.",
+    'proj.robot.desc': 'A ROS-based autonomous differential-drive robot: LIDAR mapping and navigation, YOLOv7 + OpenCV to see and interact with people, and a web interface to watch it think.',
+    'story.title': '03 — STORY',
+    'story.sub': 'MY PATH',
+    'story.intro': "Born in Cádiz. Studied Computer Science because I wanted to understand how things work. Got obsessed with making things fast and precise — first at university, building a real Formula Student car, then writing software for defense systems. In the time left over I build software for sim racing. Here's the full picture.",
+    'tl.irc.date': '2026 — NOW · PERSONAL PROJECT',
+    'tl.irc.desc': 'An AI engineer you actually talk to in realtime during a sim session. Full desktop product with voice, backend and payments — built end to end.',
+    'tl.gtd.date': '2023 — NOW · FULL-TIME',
+    'tl.gtd.desc': 'Software engineer building multi-threaded systems in C++ and Python — computer vision, FPGA pipelines, real-time distributed comms for critical defense applications. Three months on-site in Riyadh in late 2025.',
+    'tl.riyadh.date': 'SEP — DEC 2025 · DEPLOYMENT',
+    'tl.riyadh.desc': 'Three months on-site at SAMINavantia — technical consulting and development for the HAZEM Lite defense project.',
+    'tl.overlays.date': '2024 — NOW · OPEN SOURCE',
+    'tl.overlays.desc': 'Open-source Python web app streaming live sim data into customisable on-screen overlays for OBS or the browser.',
+    'tl.univ.date': '2024 · DEGREE PROJECT + GRADUATION',
+    'tl.univ.title': 'University of Cádiz — end',
+    'tl.univ.desc': 'Six years, one degree. Final project: an autonomous ROS robot with LIDAR navigation, YOLOv7 detection and a live web interface. BSc Computer Science Engineering.',
+    'tl.fs24.date': '2024 · FORMULA STUDENT',
+    'tl.fs24.title': 'Spain',
+    'tl.fs24.desc': 'Formula Gades competed in Spain once more. One of the final events for the team.',
+    'tl.gtd_start.date': 'OCT 2022 · TRAINEE',
+    'tl.gtd_start.desc': 'First step into professional software. Joined GTD as a trainee engineer — the beginning of building systems that matter.',
+    'tl.fsspain22.date': 'AUG 2022 · FORMULA STUDENT',
+    'tl.fsspain22.title': 'FS SPAIN',
+    'tl.fsspain22.desc': 'Formula Student Spain 2022 with Formula Gades. My final year leading the electronics team.',
+    'tl.fsger22.date': 'AUG 2022 · FORMULA STUDENT',
+    'tl.fsger22.title': 'FS GERMANY',
+    'tl.fsger22.desc': 'Formula Student Germany 2022 — Hockenheimring. Racing with Formula Gades.',
+    'tl.fsspain21.date': '2021 · FORMULA STUDENT',
+    'tl.fsspain21.title': 'FS SPAIN',
+    'tl.fsspain21.desc': 'Formula Student Spain 2021. First international season with Formula Gades.',
+    'tl.fscz21.date': '2021 · FORMULA STUDENT',
+    'tl.fscz21.title': 'FS CZECH REPUBLIC',
+    'tl.fscz21.desc': 'Formula Student Czech Republic 2021 — Brno. First international event for the team.',
+    'tl.univ_start.date': '2018 — 2024 · EDUCATION',
+    'tl.univ_start.title': 'University of Cádiz — start',
+    'tl.univ_start.desc': 'Started BSc Computer Science Engineering. The beginning of everything that followed.',
+    'tl.fg.date': '2018 · FORMULA STUDENT',
+    'tl.fg.title': 'Formula Gades',
+    'tl.fg.desc': 'Joined the Formula Student team at university. Started building real cars.',
+    'contact.title': '04 — CONTACT',
+    'contact.heading': "Let's talk.",
+    'contact.desc': 'Got a project, an opportunity, or just want to talk software? Get in touch.',
+    'contact.email': 'EMAIL ME',
+  },
+  es: {
+    'nav.portfolio': 'PORTFOLIO',
+    'nav.experience': 'EXPERIENCIA',
+    'nav.projects': 'PROYECTOS',
+    'nav.timeline': 'TRAYECTORIA',
+    'nav.contact': 'CONTACTO',
+    'hero.bio': 'Ingeniero de software en GTD — Defensa y Seguridad, desarrollando sistemas críticos multihilo en C++ y Python: visión artificial, pipelines FPGA y comunicaciones en tiempo real. En mi tiempo libre, construyo software para el sim racing.',
+    'hero.base': 'BASE — CÁDIZ, ESPAÑA · 36.53°N 6.29°W',
+    'hero.now': 'AHORA — SOFTWARE ENGINEER @ GTD · PROYECTO PROPIO: IRCOPILOT.COM',
+    'hero.email': 'ESCRÍBEME',
+    'exp.title': '01 — EXPERIENCIA',
+    'exp.sub': 'HISTORIAL',
+    'exp.col.role': 'ROL — EQUIPO',
+    'exp.col.stint': 'PERÍODO',
+    'exp.col.loc': 'UBICACIÓN',
+    'exp.current': 'ACTUAL',
+    'exp.01.role': 'Software Engineer',
+    'exp.01.desc': 'Sistemas críticos multihilo para defensa. DDS, WebSockets y comunicaciones serie bajo estándares aplicados; integración FPGA sobre XDMA; pipelines de vídeo con GStreamer; visión artificial con OpenCV, YOLOv7 y PyTorch. Contribuidor principal en BOX-AI.',
+    'exp.01.date': 'JUN 2023 — HOY',
+    'exp.02.role': 'Consultor Técnico de Software',
+    'exp.02.desc': 'Despliegue de tres meses en Riad: asistencia técnica in situ, integraciones y nuevas funcionalidades para el proyecto HAZEM Lite.',
+    'exp.02.date': 'SEP — DIC 2025',
+    'exp.03.role': 'Trainee — Software Engineer',
+    'exp.03.date': 'OCT 2022 — JUN 2023',
+    'exp.04.role': 'Responsable, Depto. de Electrónica',
+    'exp.04.desc': 'Protocolo CAN y software de telemetría en C++; dashboard en tiempo real; diseño 3D en 3DEXPERIENCE; diseño y fabricación del cableado completo del coche.',
+    'exp.04.date': 'SEP 2020 — SEP 2022',
+    'exp.edu': 'EDU — GRADO EN ING. INFORMÁTICA · UNIVERSIDAD DE CÁDIZ · 2018–2024',
+    'exp.lang': 'IDIOMAS — ES NATIVO · EN C1',
+    'proj.title': '02 — PROYECTOS',
+    'proj.sub': 'PROYECTOS',
+    'proj.irc.desc': 'Un ingeniero de carreras con IA con el que hablas de verdad — conversación de voz en tiempo real y multilingüe durante la vuelta. Lanzado como app de escritorio de pago con backend, pagos y web, de principio a fin.',
+    'proj.overlays.desc': 'App web open-source en Python que transmite datos de iRacing en tiempo real a overlays personalizables — en pantalla o en el navegador, lista para OBS. Diseñada para que añadir nuevos overlays sea trivial.',
+    'proj.telemetry.desc': 'El primer sistema de telemetría y datalogging en tiempo real de Formula Gades: lecturas CAN de la ECU, un ESP32 enviando paquetes MQTT por LTE, visualizado en un servicio web Node-RED.',
+    'proj.robot.desc': 'Un robot autónomo de tracción diferencial basado en ROS: mapeo y navegación con LIDAR, YOLOv7 + OpenCV para detectar e interactuar con personas, e interfaz web para visualizar su razonamiento.',
+    'story.title': '03 — HISTORIA',
+    'story.sub': 'MI CAMINO',
+    'story.intro': 'Nacido en Cádiz. Estudié Informática porque quería entender cómo funcionan las cosas. Me obsesioné con hacer cosas rápidas y precisas — primero en la universidad, construyendo un coche de Formula Student real, luego escribiendo software para sistemas de defensa. En el tiempo libre, construyo software para el sim racing. Aquí está el cuadro completo.',
+    'tl.irc.date': '2026 — HOY · PROYECTO PROPIO',
+    'tl.irc.desc': 'Un ingeniero de IA con el que hablas en tiempo real durante una sesión de sim. Producto de escritorio completo con voz, backend y pagos — construido de principio a fin.',
+    'tl.gtd.date': '2023 — HOY · JORNADA COMPLETA',
+    'tl.gtd.desc': 'Ingeniero de software desarrollando sistemas multihilo en C++ y Python — visión artificial, pipelines FPGA, comunicaciones distribuidas en tiempo real para aplicaciones de defensa críticas. Tres meses in situ en Riad a finales de 2025.',
+    'tl.riyadh.date': 'SEP — DIC 2025 · DESPLIEGUE',
+    'tl.riyadh.desc': 'Tres meses in situ en SAMINavantia — consultoría técnica y desarrollo para el proyecto de defensa HAZEM Lite.',
+    'tl.overlays.date': '2024 — HOY · OPEN SOURCE',
+    'tl.overlays.desc': 'App web open-source en Python que transmite datos de sim en tiempo real a overlays personalizables en pantalla para OBS o el navegador.',
+    'tl.univ.date': '2024 · PROYECTO FIN DE GRADO + GRADUACIÓN',
+    'tl.univ.title': 'Universidad de Cádiz — fin',
+    'tl.univ.desc': 'Seis años, un título. Proyecto final: un robot autónomo ROS con navegación LIDAR, detección YOLOv7 e interfaz web en tiempo real. Grado en Ingeniería Informática.',
+    'tl.fs24.date': '2024 · FORMULA STUDENT',
+    'tl.fs24.title': 'España',
+    'tl.fs24.desc': 'Formula Gades compitió en España una vez más. Uno de los últimos eventos para el equipo.',
+    'tl.gtd_start.date': 'OCT 2022 · TRAINEE',
+    'tl.gtd_start.desc': 'Primer paso en el software profesional. Me uní a GTD como ingeniero en prácticas — el comienzo de construir sistemas que importan.',
+    'tl.fsspain22.date': 'AGO 2022 · FORMULA STUDENT',
+    'tl.fsspain22.title': 'FS SPAIN',
+    'tl.fsspain22.desc': 'Formula Student España 2022 con Formula Gades. Mi último año liderando el departamento de electrónica.',
+    'tl.fsger22.date': 'AGO 2022 · FORMULA STUDENT',
+    'tl.fsger22.title': 'FS GERMANY',
+    'tl.fsger22.desc': 'Formula Student Alemania 2022 — Hockenheimring. Corriendo con Formula Gades.',
+    'tl.fsspain21.date': '2021 · FORMULA STUDENT',
+    'tl.fsspain21.title': 'FS SPAIN',
+    'tl.fsspain21.desc': 'Formula Student España 2021. Primera temporada internacional con Formula Gades.',
+    'tl.fscz21.date': '2021 · FORMULA STUDENT',
+    'tl.fscz21.title': 'FS CZECH REPUBLIC',
+    'tl.fscz21.desc': 'Formula Student República Checa 2021 — Brno. Primer evento internacional del equipo.',
+    'tl.univ_start.date': '2018 — 2024 · EDUCACIÓN',
+    'tl.univ_start.title': 'Universidad de Cádiz — inicio',
+    'tl.univ_start.desc': 'Inicio del Grado en Ingeniería Informática. El comienzo de todo lo que vino después.',
+    'tl.fg.date': '2018 · FORMULA STUDENT',
+    'tl.fg.title': 'Formula Gades',
+    'tl.fg.desc': 'Me uní al equipo de Formula Student en la universidad. Empecé a construir coches de verdad.',
+    'contact.title': '04 — CONTACTO',
+    'contact.heading': 'Hablemos.',
+    'contact.desc': '¿Tienes un proyecto, una oportunidad, o simplemente quieres hablar de software? Contáctame.',
+    'contact.email': 'ESCRÍBEME',
+  }
+};
+
+let _rahLang = 'en';
+
+window.rahApplyLang = function(lang) {
+  _rahLang = lang;
+  const t = RAH_I18N[lang] || RAH_I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  const btn = document.getElementById('rah-lang');
+  if (btn) btn.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
+  localStorage.setItem('rah-lang', lang);
+};
+
+window.rahToggleLang = function() {
+  window.rahApplyLang(_rahLang === 'en' ? 'es' : 'en');
+};
 </script>
 </body>
 </html>
