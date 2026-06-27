@@ -79,12 +79,13 @@
         <div style="position: absolute; bottom: -1px; left: -1px; width: 14px; height: 14px; border-bottom: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
         <div style="position: absolute; bottom: -1px; right: -1px; width: 14px; height: 14px; border-bottom: 2px solid #E2483D; border-right: 2px solid #E2483D;"></div>
         <div style="position: relative; overflow: hidden;">
-          <img src="assets/raul.png" alt="Raúl Arcos Herrera" style="display: block; width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 55% 18%; filter: saturate(0.88) contrast(1.04);">
+          <img src="assets/raul.png" alt="Raúl Arcos Herrera" id="rah-photo" style="display: block; width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; object-position: 55% 18%; filter: saturate(0.88) contrast(1.04); cursor: pointer;" style-hover="filter: saturate(0.95) contrast(1.06) brightness(1.1);">
           <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(11,11,12,0) 70%, rgba(11,11,12,0.55) 100%);"></div>
           <div style="position: absolute; left: 0; right: 0; top: 0; height: 90px; pointer-events: none; background: linear-gradient(180deg, rgba(226,72,61,0) 0%, rgba(226,72,61,0.12) 50%, rgba(226,72,61,0) 100%); animation: rahScan 5.5s linear infinite;"></div>
         </div>
-        <div style="display: flex; justify-content: space-between; padding: 12px 4px 4px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #76766F;">
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 4px 4px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #76766F;">
           <span>RAÚL ARCOS HERRERA</span>
+          <span id="rah-race-label" style="color: #E2483D; font-size: 9px; letter-spacing: 0.18em; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; opacity: 0.7;" style-hover="opacity: 1;">▶ RACE</span>
         </div>
       </div>
     </div>
@@ -469,6 +470,7 @@
 
 </div>
 </x-dc>
+<script src="./racing-game.js"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
