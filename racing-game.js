@@ -14,58 +14,108 @@
   const PHYS_HZ      = 120;
   const STEP         = 1 / PHYS_HZ;
 
-  const W = 900, H = 560;
-  const TRACK_W = 80;
+const W = 900, H = 560;
+  const TRACK_W = 58;   // narrowed from 80 so the infield fold stays open & drives clean
   const CAR_R   = 6;
-
-  // ── Circuit — traced from reference image ────────────────────────────────
-  // Clockwise: S/F bottom-right → diagonal main straight → bottom-left hairpin
-  // → left-side climb → top sweep → right-side inner S → closes to S/F
+ 
+  // ── Circuit — traced from the Red Bull Ring reference PNG ──────────────────
+  // Skeletonized red ribbon -> ordered closed loop -> resampled to 72 pts,
+  // fitted into the 900x560 space. Clockwise. Index 0 = S/F (rightmost point).
   const CL = [
-    [739, 471],  //  0  S/F — bottom-right
-    [661, 491],  //  1  spawn
-    [557, 497],  //  2  main straight
-    [446, 491],  //  3  SECTOR 1
-    [336, 475],  //  4
-    [245, 449],  //  5
-    [180, 415],  //  6  main straight end
-    [134, 374],  //  7  bottom-left complex
-    [112, 321],  //  8  SECTOR 2
-    [115, 270],  //  9
-    [143, 224],  // 10
-    [186, 192],  // 11
-    [238, 163],  // 12  SECTOR 3 — left side
-    [299, 142],  // 13
-    [362, 127],  // 14
-    [446, 108],  // 15  top section
-    [550,  98],  // 16
-    [650,  94],  // 17
-    [700,  98],  // 18
-    [726, 103],  // 19
-    [762, 127],  // 20  inner section entry
-    [780, 159],  // 21
-    [767, 192],  // 22
-    [741, 220],  // 23
-    [736, 251],  // 24  SECTOR 4 — inner S
-    [745, 283],  // 25
-    [767, 311],  // 26
-    [784, 348],  // 27
-    [788, 397],  // 28
-    [775, 441],  // 29
-    [739, 471],  // 30  closes to 0
+    [778, 361],  //  0  S/F  (car crosses here to time laps)
+    [765, 385],  //  1  spawn (car starts here, faces CL[2])
+    [742, 403],  //  2
+    [714, 417],  //  3
+    [684, 428],  //  4
+    [653, 437],  //  5
+    [622, 445],  //  6
+    [590, 454],  //  7
+    [559, 462],  //  8
+    [527, 470],  //  9
+    [496, 478],  // 10
+    [465, 485],  // 11
+    [434, 489],  // 12
+    [405, 485],  // 13
+    [380, 471],  // 14  SECTOR 1
+    [359, 449],  // 15
+    [340, 423],  // 16
+    [320, 398],  // 17
+    [300, 373],  // 18
+    [281, 347],  // 19
+    [264, 319],  // 20
+    [249, 289],  // 21
+    [236, 259],  // 22
+    [223, 228],  // 23
+    [209, 199],  // 24
+    [191, 174],  // 25
+    [169, 151],  // 26
+    [147, 129],  // 27
+    [131, 107],  // 28
+    [129,  87],  // 29  SECTOR 2
+    [145,  73],  // 30
+    [172,  68],  // 31
+    [203,  69],  // 32
+    [235,  72],  // 33
+    [267,  77],  // 34
+    [299,  83],  // 35
+    [331,  88],  // 36
+    [363,  93],  // 37
+    [395,  97],  // 38
+    [427, 100],  // 39
+    [459, 103],  // 40
+    [489, 109],  // 41
+    [511, 120],  // 42
+    [518, 138],  // 43  SECTOR 3
+    [508, 157],  // 44
+    [486, 173],  // 45
+    [457, 183],  // 46
+    [426, 186],  // 47
+    [394, 185],  // 48
+    [363, 183],  // 49
+    [336, 187],  // 50
+    [318, 199],  // 51
+    [314, 219],  // 52
+    [320, 244],  // 53
+    [333, 270],  // 54
+    [349, 294],  // 55
+    [369, 309],  // 56
+    [391, 310],  // 57
+    [415, 299],  // 58  SECTOR 4
+    [441, 284],  // 59
+    [469, 273],  // 60
+    [499, 266],  // 61
+    [531, 263],  // 62
+    [563, 262],  // 63
+    [596, 262],  // 64
+    [628, 263],  // 65
+    [660, 263],  // 66
+    [692, 265],  // 67
+    [723, 271],  // 68
+    [749, 284],  // 69
+    [768, 306],  // 70
+    [778, 333],  // 71
+    [778, 361],  // 72  closes to 0
   ];
-  const N = CL.length; // 31
-
-  const SECTOR_IDX = [3, 8, 12, 24];
+  const N = CL.length; // 73
+ 
+  const SECTOR_IDX = [14, 29, 43, 58];
   const MIN_LAP_MS = 5000;
   const LB_KEY = 'rah-racing-lb-v3';
 
-  // ── Leaderboard — localStorage + leaderboard.json seed ───────────────────
-  function loadLB()    { try { return JSON.parse(localStorage.getItem(LB_KEY)) || {}; } catch { return {}; } }
-  function saveLB(lb)  { try { localStorage.setItem(LB_KEY, JSON.stringify(lb)); } catch {} }
+  // ── Shared leaderboard via Firebase Realtime Database ─────────────────────
+  // 1. Go to console.firebase.google.com → create project → Realtime Database
+  // 2. In Rules tab set: { "rules": { ".read": true, ".write": true } }
+  // 3. Copy the database URL (e.g. https://xxx-rtdb.firebaseio.com) and paste below.
+  // Leave empty → localStorage only (each visitor sees only their own scores).
+  const FB_URL     = 'https://personalwebpage-c3328-default-rtdb.europe-west1.firebasedatabase.app';
+  const FB_API_KEY = 'AIzaSyBUXNV1xlumxyeLHQduq6panTv6xwyPxW8';
+
+  function loadLB()   { try { return JSON.parse(localStorage.getItem(LB_KEY)) || {}; } catch { return {}; } }
+  function saveLB(lb) { try { localStorage.setItem(LB_KEY, JSON.stringify(lb)); } catch {} }
+  function lbKey(name) { return name.replace(/[.#$[\]/]/g, '_').slice(0, 50); }
   function updateBest(u, ms) {
-    const lb = loadLB();
-    if (lb[u] === undefined || ms < lb[u]) { lb[u] = ms; saveLB(lb); return true; }
+    const k = lbKey(u), lb = loadLB();
+    if (lb[k] === undefined || ms < lb[k]) { lb[k] = ms; saveLB(lb); return true; }
     return false;
   }
   function getTop(n) { return Object.entries(loadLB()).sort((a,b) => a[1]-b[1]).slice(0,n); }
@@ -74,31 +124,75 @@
     return `${m}:${String(s).padStart(2,'0')}.${String(c).padStart(3,'0')}`;
   }
 
-  // Fetch leaderboard.json on first load and merge (file wins only if it has
-  // a better time — so manual edits to the file always take precedence)
-  fetch('./leaderboard.json?_=' + Date.now())
-    .then(r => r.ok ? r.json() : null)
-    .then(fileData => {
-      if (!fileData || typeof fileData !== 'object') return;
-      const local  = loadLB();
-      const merged = { ...local };
-      for (const [name, ms] of Object.entries(fileData)) {
-        if (typeof ms === 'number' && (merged[name] === undefined || ms < merged[name]))
-          merged[name] = ms;
+  function mergeLB(remote) {
+    if (!remote || typeof remote !== 'object') return;
+    const local = loadLB(), merged = { ...remote };
+    for (const [n,t] of Object.entries(local))
+      if (typeof t === 'number' && (!merged[n] || t < merged[n])) merged[n] = t;
+    saveLB(merged);
+  }
+
+  // Anonymous auth token — cached for the browser session (tokens last 1 hour)
+  async function getAuthToken() {
+    const tok = sessionStorage.getItem('rah-fb-tok');
+    const exp = sessionStorage.getItem('rah-fb-exp');
+    if (tok && exp && Date.now() < parseInt(exp)) return tok;
+    if (!FB_API_KEY) return null;
+    try {
+      const r = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FB_API_KEY}`,
+        { method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({returnSecureToken:true}) }
+      );
+      const j = await r.json();
+      if (j.idToken) {
+        sessionStorage.setItem('rah-fb-tok', j.idToken);
+        sessionStorage.setItem('rah-fb-exp', String(Date.now() + 3500_000)); // ~58 min
+        return j.idToken;
       }
-      saveLB(merged);
-    })
-    .catch(() => {}); // silently ignore if file missing (local dev, etc.)
+    } catch {}
+    return null;
+  }
+
+  // Pull remote scores → merge with local → call onDone when finished (reads are public)
+  async function syncLB(onDone) {
+    if (FB_URL) {
+      try {
+        const r = await fetch(FB_URL + '/rah-lb.json');
+        if (r.ok) mergeLB(await r.json());
+      } catch {}
+    }
+    if (onDone) onDone();
+  }
+
+  // Push only this player's best — PATCH leaves every other entry untouched
+  async function pushBest(name, ms) {
+    if (!FB_URL) return;
+    try {
+      const tok = await getAuthToken();
+      const url = FB_URL + '/rah-lb.json' + (tok ? `?auth=${tok}` : '');
+      await fetch(url, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ [lbKey(name)]: ms }),
+      });
+    } catch {}
+  }
 
   function exportLB() {
     const data = JSON.stringify(loadLB(), null, 2);
-    const blob = new Blob([data], {type:'application/json'});
+    const blob = new Blob([data], { type: 'application/json' });
     const a    = document.createElement('a');
     a.href     = URL.createObjectURL(blob);
     a.download = 'leaderboard.json';
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }
+
+  // Seed from leaderboard.json + warm up Firebase cache on page load
+  fetch('./leaderboard.json?_=' + Date.now())
+    .then(r => r.ok ? r.json() : null).then(d => { if (d) mergeLB(d); }).catch(() => {});
+  syncLB();
 
   // ── Geometry ──────────────────────────────────────────────────────────────
   function nearestPtOnSeg(px, py, ax, ay, bx, by) {
@@ -366,7 +460,7 @@
               let msg=`LAP ${lapCount}  ${fmtT(lapMs)}`;
               if (sessionBest===null || lapMs<sessionBest) {
                 sessionBest=lapMs;
-                if (updateBest(username,lapMs)) msg+='  ★ BEST!'; else msg+='  ✓';
+                if (updateBest(username,lapMs)) { pushBest(username,lapMs); msg+='  ★ BEST!'; } else msg+='  ✓';
                 updateLBPanel();
               }
               flash(msg,210);
@@ -486,12 +580,15 @@
     const photoEl = document.getElementById('rah-photo');
     const ov = buildOverlay(photoEl || document.body);
 
-    const top=getTop(5);
-    if (top.length) {
-      const el=document.getElementById('rr-lb0');
-      if (el) el.innerHTML='<div style="color:#E2483D;margin-bottom:4px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
-        top.map(([n,t],i)=>`P${i+1} ${n.slice(0,12).padEnd(12,' ')} ${fmtT(t)}`).join('<br>');
+    function refreshLB0() {
+      const top=getTop(5), el=document.getElementById('rr-lb0'); if (!el) return;
+      el.innerHTML = top.length
+        ? '<div style="color:#E2483D;margin-bottom:4px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
+          top.map(([n,t],i)=>`P${i+1} ${n.slice(0,12).padEnd(12,' ')} ${fmtT(t)}`).join('<br>')
+        : '<div style="color:#5B5B58;font-size:9px;">No times yet — be the first!</div>';
     }
+    refreshLB0();
+    syncLB(refreshLB0); // pull remote scores and refresh display when they arrive
 
     document.getElementById('rr-x').addEventListener('click', ()=>{ hideBackdrop(); ov.remove(); });
     document.querySelectorAll('.rr-expbtn').forEach(b => b.addEventListener('click',()=>toggleExpand(ov)));
