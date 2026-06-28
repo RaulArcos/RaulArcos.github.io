@@ -189,10 +189,7 @@ const W = 900, H = 560;
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }
 
-  // Seed from leaderboard.json + warm up Firebase cache on page load
-  fetch('./leaderboard.json?_=' + Date.now())
-    .then(r => r.ok ? r.json() : null).then(d => { if (d) mergeLB(d); }).catch(() => {});
-  syncLB();
+  syncLB(); // pull Firebase into localStorage cache on page load
 
   // ── Geometry ──────────────────────────────────────────────────────────────
   function nearestPtOnSeg(px, py, ax, ay, bx, by) {
@@ -460,7 +457,7 @@ const W = 900, H = 560;
               let msg=`LAP ${lapCount}  ${fmtT(lapMs)}`;
               if (sessionBest===null || lapMs<sessionBest) {
                 sessionBest=lapMs;
-                if (updateBest(username,lapMs)) { pushBest(username,lapMs); msg+='  ★ BEST!'; } else msg+='  ✓';
+                if (updateBest(username,lapMs)) { pushBest(username,lapMs).then(()=>syncLB(updateLBPanel)); msg+='  ★ BEST!'; } else msg+='  ✓';
                 updateLBPanel();
               }
               flash(msg,210);
