@@ -125,11 +125,9 @@ const W = 900, H = 560;
   }
 
   function mergeLB(remote) {
-    if (!remote || typeof remote !== 'object') return;
-    const local = loadLB(), merged = { ...remote };
-    for (const [n,t] of Object.entries(local))
-      if (typeof t === 'number' && (!merged[n] || t < merged[n])) merged[n] = t;
-    saveLB(merged);
+    // Firebase is the single source of truth — overwrite local cache entirely.
+    // null means the database path doesn't exist yet (no scores posted).
+    saveLB((remote && typeof remote === 'object') ? remote : {});
   }
 
   // Anonymous auth token — cached for the browser session (tokens last 1 hour)
