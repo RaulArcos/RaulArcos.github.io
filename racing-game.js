@@ -293,7 +293,7 @@
 <div id="rr-name" style="text-align:center;position:relative;padding:18px 20px;width:100%;box-sizing:border-box;overflow-y:auto;max-height:100%;">
   <div style="font-size:9px;letter-spacing:.18em;color:#E2483D;margin-bottom:10px;">RAH // CIRCUIT</div>
   <div style="font-family:Antonio,sans-serif;font-size:clamp(22px,5vw,50px);font-weight:700;text-transform:uppercase;line-height:1;margin-bottom:4px;">Race</div>
-  <div style="font-size:9px;color:#5B5B58;letter-spacing:.12em;margin-bottom:14px;">ARROWS OR WASD · COMPLETE LAPS</div>
+  <div style="font-size:9px;color:#5B5B58;letter-spacing:.12em;margin-bottom:14px;">ARROWS / WASD / TOUCH · COMPLETE LAPS</div>
   <input id="rr-input" placeholder="YOUR NAME" maxlength="20" autocomplete="off" style="display:block;margin:0 auto 10px;background:transparent;border:1px solid rgba(255,255,255,.22);color:#EDEDEA;font-family:IBM Plex Mono,monospace;font-size:12px;letter-spacing:.14em;padding:8px 14px;outline:none;width:min(200px,75%);box-sizing:border-box;text-transform:uppercase;text-align:center;">
   <button id="rr-go" style="background:#E2483D;border:none;color:#0B0B0C;font-family:IBM Plex Mono,monospace;font-size:10px;letter-spacing:.16em;padding:8px 22px;cursor:pointer;">START ▶</button>
   <div id="rr-lb0" style="margin-top:14px;font-size:9px;color:#5B5B58;letter-spacing:.09em;line-height:1.9;"></div>
@@ -313,6 +313,13 @@
   <button class="rr-expbtn" style="position:absolute;bottom:8px;right:62px;background:none;border:1px solid rgba(255,255,255,.15);color:#5B5B58;font-family:IBM Plex Mono,monospace;font-size:9px;padding:3px 8px;cursor:pointer;" title="Expand">⛶</button>
   <button id="rr-export" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:none;border:1px solid rgba(255,255,255,.10);color:#3a3a38;font-family:IBM Plex Mono,monospace;font-size:8px;letter-spacing:.12em;padding:3px 10px;cursor:pointer;" title="Download leaderboard.json">↓ LB</button>
   <div style="position:absolute;bottom:10px;left:10px;font-size:8px;letter-spacing:.12em;color:#252523;">CROSS S/F TO BEGIN TIMING</div>
+  <!-- Touch controls — shown only on touch devices via JS -->
+  <div id="rr-tch" style="display:none;position:absolute;inset:0;pointer-events:none;">
+    <button id="rr-tl"  style="position:absolute;left:12px;bottom:70px;width:68px;height:68px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:26px;border-radius:12px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;opacity:.5;">◄</button>
+    <button id="rr-tr"  style="position:absolute;left:90px;bottom:70px;width:68px;height:68px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:26px;border-radius:12px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;opacity:.5;">►</button>
+    <button id="rr-tg"  style="position:absolute;right:12px;bottom:148px;width:68px;height:68px;background:rgba(0,0,0,.55);border:1px solid rgba(226,72,61,.4);color:#E2483D;font-size:26px;border-radius:12px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;opacity:.5;">▲</button>
+    <button id="rr-tb2" style="position:absolute;right:12px;bottom:70px;width:68px;height:68px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.75);font-size:26px;border-radius:12px;pointer-events:auto;touch-action:none;user-select:none;-webkit-user-select:none;opacity:.5;">▼</button>
+  </div>
 </div>`;
     document.body.appendChild(ov);
     return ov;
@@ -394,18 +401,40 @@
     const car = {x:CL[1][0], y:CL[1][1], vx:0, vy:0, angle:0, angVel:0, power:0, reverse:0, wallMult:1};
     { const dx=CL[2][0]-CL[1][0], dy=CL[2][1]-CL[1][1]; car.angle=Math.atan2(dx,-dy); }
 
-    // Input
+    // Input — keyboard + touch
     const K = {};
-    const kd = e => { K[e.code]=true;  e.stopPropagation(); };
+    const T = {up:false, down:false, left:false, right:false};
+    const GAME_KEYS = new Set(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','KeyW','KeyA','KeyS','KeyD','Space']);
+    const kd = e => { if (GAME_KEYS.has(e.code)) e.preventDefault(); K[e.code]=true; e.stopPropagation(); };
     const ku = e => { K[e.code]=false; e.stopPropagation(); };
     window.addEventListener('keydown', kd, true);
     window.addEventListener('keyup',   ku, true);
     const inp = () => ({
-      up:    !!(K['ArrowUp']   ||K['KeyW']),
-      down:  !!(K['ArrowDown'] ||K['KeyS']),
-      left:  !!(K['ArrowLeft'] ||K['KeyA']),
-      right: !!(K['ArrowRight']||K['KeyD']),
+      up:    !!(K['ArrowUp']   ||K['KeyW'] ||T.up),
+      down:  !!(K['ArrowDown'] ||K['KeyS'] ||T.down),
+      left:  !!(K['ArrowLeft'] ||K['KeyA'] ||T.left),
+      right: !!(K['ArrowRight']||K['KeyD'] ||T.right),
     });
+
+    // Touch controls
+    const tchEl = document.getElementById('rr-tch');
+    if ('ontouchstart' in window) {
+      if (tchEl) tchEl.style.display = 'block';
+      const bindBtn = (id, key) => {
+        const el = document.getElementById(id); if (!el) return;
+        const on  = e => { e.preventDefault(); T[key]=true;  el.style.opacity='0.92'; };
+        const off = e => { e.preventDefault(); T[key]=false; el.style.opacity='0.5';  };
+        el.addEventListener('touchstart',  on,  {passive:false});
+        el.addEventListener('touchend',    off, {passive:false});
+        el.addEventListener('touchcancel', off, {passive:false});
+      };
+      bindBtn('rr-tl',  'left');
+      bindBtn('rr-tr',  'right');
+      bindBtn('rr-tg',  'up');
+      bindBtn('rr-tb2', 'down');
+      // Hide dev-only export button on mobile to reduce clutter
+      const expEl = document.getElementById('rr-export'); if (expEl) expEl.style.display='none';
+    }
 
     // Timing
     let lapCount=0, curLapStart=null, sessionBest=null;
@@ -606,7 +635,9 @@
         : '<div style="color:#5B5B58;font-size:9px;">No times yet — be the first!</div>';
     }
     refreshLB0();
-    syncLB(refreshLB0); // pull remote scores and refresh display when they arrive
+    syncLB(refreshLB0);
+    // Auto-expand on touch devices — photo-sized window is too small to play on mobile
+    if ('ontouchstart' in window) setTimeout(() => toggleExpand(ov), 60);
 
     document.getElementById('rr-x').addEventListener('click', ()=>{ hideBackdrop(); ov.remove(); });
     document.querySelectorAll('.rr-expbtn').forEach(b => b.addEventListener('click',()=>toggleExpand(ov)));
