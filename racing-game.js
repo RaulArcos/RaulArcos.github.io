@@ -232,9 +232,6 @@
     const a    = CL[i];
     const prev = CL[(i - 1 + M) % M];
     const next = CL[(i + 1) % M];
-    // Square the gate to the AVERAGED flow direction (prev -> next) so it
-    // stays perpendicular to the racing line through corners, not just to
-    // one segment. half overshoots both track edges -> spans fully, no gaps.
     const dx = next[0] - prev[0], dy = next[1] - prev[1];
     const len = Math.hypot(dx, dy) || 1;
     const ndx = dx / len, ndy = dy / len;     // forward tangent
