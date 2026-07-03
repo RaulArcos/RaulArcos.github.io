@@ -295,7 +295,7 @@
   <button id="rr-go" style="background:#E2483D;border:none;color:#0B0B0C;font-family:IBM Plex Mono,monospace;font-size:10px;letter-spacing:.16em;padding:8px 22px;cursor:pointer;">START ▶</button>
   <div id="rr-lb0" style="margin-top:14px;font-size:9px;color:#5B5B58;letter-spacing:.09em;line-height:1.9;"></div>
   <button id="rr-x" style="position:absolute;top:8px;right:8px;background:none;border:1px solid rgba(255,255,255,.15);color:#5B5B58;font-family:IBM Plex Mono,monospace;font-size:9px;padding:3px 8px;cursor:pointer;">✕</button>
-  <button class="rr-expbtn" style="position:absolute;top:8px;right:40px;background:none;border:1px solid rgba(255,255,255,.15);color:#5B5B58;font-family:IBM Plex Mono,monospace;font-size:9px;padding:3px 8px;cursor:pointer;" title="Expand">⛶</button>
+  <button class="rr-expbtn" style="position:absolute;top:8px;right:40px;background:rgba(226,72,61,.12);border:1px solid rgba(226,72,61,.6);color:#E2483D;font-family:IBM Plex Mono,monospace;font-size:14px;line-height:1;padding:4px 9px;cursor:pointer;" title="Expand">⛶</button>
 </div>
 <div id="rr-game" style="display:none;position:absolute;inset:0;">
   <canvas id="rr-canvas" style="position:absolute;inset:0;display:block;width:100%;height:100%;"></canvas>
@@ -305,9 +305,9 @@
     <div><div style="font-size:7px;color:#5B5B58;letter-spacing:.16em;margin-bottom:2px;">BEST</div><div id="rr-hbest" style="font-family:Antonio,sans-serif;font-size:clamp(14px,2.5vw,24px);">—:——.———</div></div>
   </div>
   <div id="rr-msg" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:Antonio,sans-serif;font-size:clamp(16px,4vw,38px);letter-spacing:.06em;color:#E2483D;text-transform:uppercase;pointer-events:none;opacity:0;transition:opacity .2s;text-shadow:0 0 18px rgba(226,72,61,.55);"></div>
-  <div id="rr-lb1" style="position:absolute;top:52px;right:6px;font-size:9px;letter-spacing:.09em;color:#5B5B58;line-height:1.9;background:rgba(11,11,12,.78);padding:6px 10px;border:1px solid rgba(255,255,255,.07);"></div>
+  <div id="rr-lb1" style="position:absolute;top:52px;right:6px;font-size:9px;letter-spacing:.09em;color:#5B5B58;line-height:1.9;background:rgba(11,11,12,.78);padding:6px 10px;border:1px solid rgba(255,255,255,.07);max-width:220px;box-sizing:border-box;"></div>
   <button id="rr-quit" style="position:absolute;bottom:8px;right:8px;background:none;border:1px solid rgba(255,255,255,.15);color:#5B5B58;font-family:IBM Plex Mono,monospace;font-size:9px;padding:3px 8px;cursor:pointer;">✕ QUIT</button>
-  <button class="rr-expbtn" style="position:absolute;bottom:8px;right:62px;background:none;border:1px solid rgba(255,255,255,.15);color:#5B5B58;font-family:IBM Plex Mono,monospace;font-size:9px;padding:3px 8px;cursor:pointer;" title="Expand">⛶</button>
+  <button class="rr-expbtn" style="position:absolute;bottom:8px;right:62px;background:rgba(226,72,61,.12);border:1px solid rgba(226,72,61,.6);color:#E2483D;font-family:IBM Plex Mono,monospace;font-size:14px;line-height:1;padding:4px 9px;cursor:pointer;" title="Expand">⛶</button>
   <button id="rr-export" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:none;border:1px solid rgba(255,255,255,.10);color:#3a3a38;font-family:IBM Plex Mono,monospace;font-size:8px;letter-spacing:.12em;padding:3px 10px;cursor:pointer;" title="Download leaderboard.json">↓ LB</button>
   <div style="position:absolute;bottom:10px;left:10px;font-size:8px;letter-spacing:.12em;color:#252523;">CROSS S/F TO BEGIN TIMING</div>
   <!-- Touch controls — shown only on touch devices via JS -->
@@ -534,11 +534,22 @@
       if (c) c.textContent=curLapStart?fmtT(performance.now()-curLapStart):'—:——.———';
       if (b) b.textContent=sessionBest!==null?fmtT(sessionBest):'—:——.———';
     }
+    let lb1Expanded = false;
     function updateLBPanel() {
-      const top=getTop(8), el=document.getElementById('rr-lb1'); if (!top.length||!el) return;
-      el.innerHTML='<div style="color:#E2483D;margin-bottom:3px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
-        top.map(([n,t],i)=>`<div style="${n===username?'color:#EDEDEA;':''}">`+
+      const all=getTop(999), el=document.getElementById('rr-lb1'); if (!all.length||!el) return;
+      const shown = lb1Expanded ? all : all.slice(0,8);
+      el.style.maxHeight  = lb1Expanded ? 'calc(100% - 60px)' : 'none';
+      el.style.overflowY  = lb1Expanded ? 'auto' : 'visible';
+      let html='<div style="color:#E2483D;margin-bottom:3px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
+        shown.map(([n,t],i)=>`<div style="${n===username?'color:#EDEDEA;':''}">`+
           `P${i+1} ${n.slice(0,10).padEnd(10,' ')} ${fmtT(t)}</div>`).join('');
+      if (all.length > 8) {
+        html += '<div id="rr-lb1-toggle" title="'+(lb1Expanded?'Show top 8':'Show full leaderboard')+'" style="cursor:pointer;color:#76766F;margin-top:3px;padding-top:3px;border-top:1px solid rgba(255,255,255,.08);text-align:center;">'+
+          (lb1Expanded ? '▴ SHOW LESS' : `▾ SHOW ALL (${all.length})`)+'</div>';
+      }
+      el.innerHTML = html;
+      const btn=document.getElementById('rr-lb1-toggle');
+      if (btn) btn.addEventListener('click', e => { e.stopPropagation(); lb1Expanded=!lb1Expanded; updateLBPanel(); });
     }
     updateLBPanel();
 
@@ -639,12 +650,20 @@
     const photoEl = document.getElementById('rah-photo');
     const ov = buildOverlay(photoEl || document.body);
 
+    let lb0Expanded = false;
     function refreshLB0() {
-      const top=getTop(5), el=document.getElementById('rr-lb0'); if (!el) return;
-      el.innerHTML = top.length
-        ? '<div style="color:#E2483D;margin-bottom:4px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
-          top.map(([n,t],i)=>`P${i+1} ${n.slice(0,12).padEnd(12,' ')} ${fmtT(t)}`).join('<br>')
-        : '<div style="color:#5B5B58;font-size:9px;">No times yet — be the first!</div>';
+      const all=getTop(999), el=document.getElementById('rr-lb0'); if (!el) return;
+      if (!all.length) { el.innerHTML='<div style="color:#5B5B58;font-size:9px;">No times yet — be the first!</div>'; return; }
+      const shown = lb0Expanded ? all : all.slice(0,5);
+      let html='<div style="color:#E2483D;margin-bottom:4px;font-size:8px;letter-spacing:.18em;">LEADERBOARD</div>'+
+        shown.map(([n,t],i)=>`P${i+1} ${n.slice(0,12).padEnd(12,' ')} ${fmtT(t)}`).join('<br>');
+      if (all.length > 5) {
+        html += '<br><span id="rr-lb0-toggle" title="'+(lb0Expanded?'Show top 5':'Show full leaderboard')+'" style="cursor:pointer;color:#76766F;display:inline-block;margin-top:4px;">'+
+          (lb0Expanded ? '▴ SHOW LESS' : `▾ SHOW ALL (${all.length})`)+'</span>';
+      }
+      el.innerHTML = html;
+      const btn=document.getElementById('rr-lb0-toggle');
+      if (btn) btn.addEventListener('click', e => { e.stopPropagation(); lb0Expanded=!lb0Expanded; refreshLB0(); });
     }
     refreshLB0();
     syncLB(refreshLB0);
