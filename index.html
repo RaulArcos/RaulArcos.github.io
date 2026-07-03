@@ -28,6 +28,30 @@
     #rah-clickme { position: absolute; top: -13px; right: 20px; background: #E2483D; color: #0B0B0C; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; padding: 6px 13px; white-space: nowrap; opacity: 0; transform: translateY(6px) scale(0.9); transition: opacity 0.4s ease, transform 0.4s ease; pointer-events: none; z-index: 3; box-shadow: 0 4px 14px rgba(0,0,0,0.4); }
     #rah-clickme.rah-clickme-show { opacity: 1 !important; animation: rahClickBounce 1.4s ease-in-out infinite; }
     .rah-social-icon { width: 15px; height: 15px; display: inline-block; vertical-align: middle; margin-right: 8px; opacity: 0.9; }
+
+    /* ── Mobile layout — desktop is untouched below 761px this only kicks in ── */
+    @media (max-width: 760px) {
+      #site-header { flex-wrap: wrap; padding: 12px 16px !important; row-gap: 10px; }
+      .rah-nav { order: 3; width: 100%; justify-content: center; gap: 14px !important; font-size: 10px !important; flex-wrap: wrap; }
+
+      #hero { grid-template-columns: 1fr !important; gap: 32px !important; padding: 48px 20px 40px !important; }
+      #hero h1 { font-size: clamp(42px, 13vw, 88px) !important; }
+      .rah-hero-photo { max-width: 340px; margin: 0 auto; }
+
+      #experience, #projects, #contact { padding-left: 20px !important; padding-right: 20px !important; }
+      #timeline > div { padding-left: 20px !important; padding-right: 20px !important; }
+
+      .rah-exp-head { display: none !important; }
+      .rah-exp-row { grid-template-columns: 1fr !important; row-gap: 6px !important; }
+      .rah-exp-date, .rah-exp-loc { text-align: left !important; padding-top: 0 !important; margin-top: 0 !important; }
+
+      .rah-proj-grid { grid-template-columns: 1fr !important; }
+
+      .rah-tl-line, .rah-tl-dot, .rah-tl-year-bg { display: none !important; }
+      .rah-tl-row { grid-template-columns: 1fr !important; margin-bottom: 32px !important; }
+
+      #contact h2 { font-size: clamp(48px, 15vw, 100px) !important; }
+    }
   </style>
 </helmet>
 
@@ -35,12 +59,12 @@
 
   <div id="rah-progress" style="position: fixed; top: 0; left: 0; right: 0; height: 2px; background: #E2483D; transform: scaleX(0); transform-origin: 0 50%; z-index: 100;"></div>
 
-  <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(11,11,12,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.09); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em;">
+  <header id="site-header" data-screen-label="Header" style="position: sticky; top: 0; z-index: 90; display: flex; align-items: center; justify-content: space-between; padding: 14px 40px; background: rgba(11,11,12,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.09); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em;">
     <div style="display: flex; align-items: center; gap: 14px;">
       <span style="color: #E2483D; font-weight: 500;">RAH</span>
       <span style="color: #5B5B58;" data-i18n="nav.portfolio">PORTFOLIO</span>
     </div>
-    <nav style="display: flex; align-items: center; gap: 28px;">
+    <nav class="rah-nav" style="display: flex; align-items: center; gap: 28px;">
       <a href="#experience" data-i18n="nav.experience" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">EXPERIENCE</a>
       <a href="#projects" data-i18n="nav.projects" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">PROJECTS</a>
       <a href="#timeline" data-i18n="nav.timeline" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">TIMELINE</a>
@@ -56,7 +80,7 @@
     </div>
   </header>
 
-  <section data-screen-label="Hero" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; padding: 88px 64px 72px; max-width: 1440px; margin: 0 auto; box-sizing: border-box;">
+  <section id="hero" data-screen-label="Hero" style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center; padding: 88px 64px 72px; max-width: 1440px; margin: 0 auto; box-sizing: border-box;">
     <div>
       <div data-rh style="transition: border-color 0.3s, background 0.3s; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #E2483D; margin-bottom: 26px;">
         SESSION T+ <span id="rah-session">0:00.000</span>
@@ -80,7 +104,7 @@
         <a href="/cdn-cgi/l/email-protection#80f2e1f5ece1f2e3eff3e8e5f2f2e5f2e1c0e7ede1e9ecaee3efed" style="display: inline-flex; align-items: center; color: #0B0B0C; background: #E2483D; text-decoration: none; border: 1px solid #E2483D; padding: 10px 18px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);"><span data-i18n="hero.email">EMAIL ME</span></a>
       </div>
     </div>
-    <div data-rh data-rh-delay="200" style="transition: border-color 0.3s;">
+    <div class="rah-hero-photo" data-rh data-rh-delay="200" style="transition: border-color 0.3s;">
       <div id="rah-photo-frame" style="position: relative; border: 1px solid rgba(255,255,255,0.18); padding: 10px;">
         <span id="rah-clickme" data-i18n="hero.clickme">CLICK ME ↓</span>
         <div style="position: absolute; top: -1px; left: -1px; width: 14px; height: 14px; border-top: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
@@ -114,11 +138,11 @@
       <span data-i18n="exp.sub" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">HISTORY</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; padding: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; border-bottom: 1px solid rgba(255,255,255,0.12);">
+    <div class="rah-exp-row rah-exp-head" style="display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; padding: 0 0 12px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; border-bottom: 1px solid rgba(255,255,255,0.12);">
       <span>POS</span><span data-i18n="exp.col.role">ROLE — TEAM</span><span data-i18n="exp.col.stint">STINT</span><span data-i18n="exp.col.loc" style="text-align: right;">LOCATION</span>
     </div>
 
-    <div data-rh style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
+    <div class="rah-exp-row" data-rh style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #E2483D;">01</span>
       <div>
         <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
@@ -128,40 +152,40 @@
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security</div>
         <p data-i18n="exp.01.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Multi-threaded critical systems for defense. DDS, WebSockets and serial comms to applied standards; FPGA integration over XDMA; GStreamer video pipelines; computer vision with OpenCV, YOLOv7 and PyTorch. Core contributor on BOX-AI.</p>
       </div>
-      <span data-i18n="exp.01.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">JUN 2023 — NOW</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
+      <span data-i18n="exp.01.date" class="rah-exp-date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">JUN 2023 — NOW</span>
+      <span class="rah-exp-loc" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
-    <div data-rh data-rh-delay="60" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
+    <div class="rah-exp-row" data-rh data-rh-delay="60" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">02</span>
       <div>
         <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.02.role">Software Technical Consultant</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security · SAMINavantia</div>
         <p data-i18n="exp.02.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">Three-month deployment to Riyadh: on-site technical development assistance, integrations and new development for the HAZEM Lite project.</p>
       </div>
-      <span data-i18n="exp.02.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP — DEC 2025</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">RIYADH, SA</span>
+      <span data-i18n="exp.02.date" class="rah-exp-date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP — DEC 2025</span>
+      <span class="rah-exp-loc" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">RIYADH, SA</span>
     </div>
 
-    <div data-rh data-rh-delay="120" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
+    <div class="rah-exp-row" data-rh data-rh-delay="120" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">03</span>
       <div>
         <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.03.role">Trainee — Software Engineer</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">GTD — Defense &amp; Security</div>
       </div>
-      <span data-i18n="exp.03.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">OCT 2022 — JUN 2023</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
+      <span data-i18n="exp.03.date" class="rah-exp-date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">OCT 2022 — JUN 2023</span>
+      <span class="rah-exp-loc" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
-    <div data-rh data-rh-delay="180" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
+    <div class="rah-exp-row" data-rh data-rh-delay="180" style="transition: border-color 0.3s, background 0.3s; display: grid; grid-template-columns: 64px 1fr 210px 150px; gap: 0 24px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.09); transition-property: opacity, transform, background; cursor: default;" style-hover="background: rgba(255,255,255,0.025);">
       <span style="font-family: Antonio, sans-serif; font-size: 30px; font-weight: 500; color: #4A4A48;">04</span>
       <div>
         <span style="font-family: Antonio, sans-serif; font-size: 27px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em;" data-i18n="exp.04.role">Lead, Electronics Department</span>
         <div style="font-size: 13.5px; color: #9A9A95; margin-top: 6px;">Formula Gades — Formula Student Team</div>
         <p data-i18n="exp.04.desc" style="font-size: 14px; line-height: 1.6; color: #76766F; margin: 10px 0 0; max-width: 62ch; text-wrap: pretty;">CAN bus protocol and C++ telemetry software; real-time dashboard; 3D design in 3DEXPERIENCE; design and fabrication of the car's full wiring harness.</p>
       </div>
-      <span data-i18n="exp.04.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP 2020 — SEP 2022</span>
-      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
+      <span data-i18n="exp.04.date" class="rah-exp-date" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #B4B4AF; padding-top: 8px;">SEP 2020 — SEP 2022</span>
+      <span class="rah-exp-loc" style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: #76766F; text-align: right; padding-top: 8px;">CÁDIZ, ES</span>
     </div>
 
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; gap: 64px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #76766F;">
@@ -177,7 +201,7 @@
       <span data-i18n="proj.sub" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; color: #5B5B58;">PROJECTS</span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+    <div class="rah-proj-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
 
       <a href="https://ircopilot.com" target="_blank" rel="noopener" data-rh style="transition: border-color 0.3s, transform 0.25s; display: block; text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.13); background: #0E0E10; padding: 34px;" style-hover="border-color: rgba(226,72,61,0.65); transform: translateY(-5px);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em;">
@@ -258,10 +282,10 @@
       </p>
 
       <div style="position: relative;">
-        <div style="position: absolute; left: calc(50% - 0.5px); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 6%, rgba(255,255,255,0.1) 94%, transparent); pointer-events: none;"></div>
+        <div class="rah-tl-line" style="position: absolute; left: calc(50% - 0.5px); top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 6%, rgba(255,255,255,0.1) 94%, transparent); pointer-events: none;"></div>
 
         <!-- ROW 1: iRCopilot (L) + GTD current (R) -->
-        <div data-rh style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+        <div class="rah-tl-row" data-rh style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid #E2483D; border-right: 2px solid #E2483D;"></div>
@@ -276,7 +300,7 @@
             <p data-i18n="tl.irc.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0 0 12px; text-wrap: pretty;">An AI engineer you actually talk to in realtime during a sim session. Full desktop product with voice, backend and payments — built end to end.</p>
             <a href="https://ircopilot.com" target="_blank" rel="noopener" style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; color: #E2483D; text-decoration: none;" style-hover="opacity: 0.7;">IRCOPILOT.COM ↗</a>
           </div>
-          <div style="display: flex; flex-direction: column; align-items: center; padding-top: 24px; gap: 12px;">
+          <div class="rah-tl-dot" style="display: flex; flex-direction: column; align-items: center; padding-top: 24px; gap: 12px;">
             <div style="width: 13px; height: 13px; border-radius: 50%; background: #E2483D; box-shadow: 0 0 14px rgba(226,72,61,0.6); position: relative; z-index: 1;"></div>
             <span aria-hidden="true" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: rgba(226,72,61,0.4); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">2026</span>
           </div>
@@ -289,9 +313,9 @@
         </div>
 
         <!-- ROW 2: 2025 Saudi Arabia (R) -->
-        <div data-rh data-rh-delay="40" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
-          <div aria-hidden="true" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2025</span></div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+        <div class="rah-tl-row" data-rh data-rh-delay="40" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div aria-hidden="true" class="rah-tl-year-bg" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2025</span></div>
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
@@ -311,7 +335,7 @@
         </div>
 
         <!-- ROW 3: 2024 iRacing Overlays (L) -->
-        <div data-rh data-rh-delay="80" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+        <div class="rah-tl-row" data-rh data-rh-delay="80" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
@@ -324,16 +348,16 @@
               <p data-i18n="tl.overlays.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Open-source Python web app streaming live sim data into customisable on-screen overlays for OBS or the browser.</p>
             </div>
           </div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
-          <div aria-hidden="true" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2024</span></div>
+          <div aria-hidden="true" class="rah-tl-year-bg" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2024</span></div>
         </div>
 
         <!-- ROW 4: 2024 University graduation + TFG robot (R) -->
-        <div data-rh data-rh-delay="120" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+        <div class="rah-tl-row" data-rh data-rh-delay="120" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div></div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
@@ -352,7 +376,7 @@
         </div>
 
         <!-- ROW 5: 2024 Formula Student Spain (L) -->
-        <div data-rh data-rh-delay="160" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+        <div class="rah-tl-row" data-rh data-rh-delay="160" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
@@ -366,16 +390,16 @@
             <h3 data-i18n="tl.fs24.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Spain</h3>
             <p data-i18n="tl.fs24.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Gades competed in Spain once more. One of the final events for the team.</p>
           </div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div></div>
         </div>
 
         <!-- GTD start OCT 2022 (R, text only) -->
-        <div data-rh data-rh-delay="200" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
-          <div aria-hidden="true" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2022</span></div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+        <div class="rah-tl-row" data-rh data-rh-delay="200" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div aria-hidden="true" class="rah-tl-year-bg" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2022</span></div>
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,0.08); background: #0D0D0F; padding: 26px;">
@@ -387,7 +411,7 @@
         </div>
 
         <!-- FS Germany & Spain AUG 2022 (L) - combined card -->
-        <div data-rh data-rh-delay="210" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+        <div class="rah-tl-row" data-rh data-rh-delay="210" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
             <div style="position: absolute; top: -1px; left: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
@@ -401,16 +425,16 @@
             <h3 data-i18n="tl.fs22.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS GERMANY & SPAIN</h3>
             <p data-i18n="tl.fs22.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Formula Student Germany 2022 — Hockenheimring — and Formula Student Spain 2022. My final year leading the electronics team with Formula Gades.</p>
           </div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div></div>
         </div>
 
         <!-- FS Czech Republic & Spain 2021 (R) - combined card -->
-        <div data-rh data-rh-delay="230" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
-          <div aria-hidden="true" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2021</span></div>
-          <div style="display: flex; justify-content: center; padding-top: 24px;">
+        <div class="rah-tl-row" data-rh data-rh-delay="230" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; margin-bottom: 56px; align-items: start;">
+          <div aria-hidden="true" class="rah-tl-year-bg" style="align-self: stretch; display: flex; align-items: center; justify-content: center; overflow: hidden; pointer-events: none;"><span style="font-family: Antonio, sans-serif; font-weight: 700; font-size: 150px; line-height: 1; color: rgba(255,255,255,0.05); letter-spacing: 0.02em;">2021</span></div>
+          <div class="rah-tl-dot" style="display: flex; justify-content: center; padding-top: 24px;">
             <div style="width: 11px; height: 11px; border-radius: 50%; background: #252522; border: 1.5px solid rgba(255,255,255,0.2); position: relative; z-index: 1;"></div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,0.12); background: #0B0B0C; padding: 26px; position: relative; transition: border-color 0.3s;" style-hover="border-color: rgba(226,72,61,0.55);">
@@ -429,14 +453,14 @@
         </div>
 
         <!-- ROW 8: 2018 University begins (L) + Formula Gades begins (R) -->
-        <div data-rh data-rh-delay="280" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; align-items: start;">
+        <div class="rah-tl-row" data-rh data-rh-delay="280" style="display: grid; grid-template-columns: 1fr 56px 1fr; gap: 0 40px; align-items: start;">
           <div style="border: 1px solid rgba(255,255,255,0.08); background: #0D0D0F; padding: 26px;">
             <div data-i18n="tl.univ_start.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #5B5B58; margin-bottom: 8px;">2018 — 2024 · EDUCATION</div>
             <h3 data-i18n="tl.univ_start.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — start</h3>
             <p data-i18n="tl.univ_start.desc" style="font-size: 13.5px; line-height: 1.6; color: #76766F; margin: 0; text-wrap: pretty;">Started BSc Computer Science Engineering. The beginning of everything that followed.</p>
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #5B5B58; margin-top: 12px;">CÁDIZ, SPAIN</div>
           </div>
-          <div style="display: flex; flex-direction: column; align-items: center; padding-top: 24px; gap: 12px;">
+          <div class="rah-tl-dot" style="display: flex; flex-direction: column; align-items: center; padding-top: 24px; gap: 12px;">
             <div style="width: 9px; height: 9px; border-radius: 50%; background: transparent; border: 1.5px solid rgba(255,255,255,0.14); position: relative; z-index: 1;"></div>
             <span aria-hidden="true" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; color: rgba(255,255,255,0.22); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;">2018</span>
           </div>
