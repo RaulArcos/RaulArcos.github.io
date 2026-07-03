@@ -618,9 +618,24 @@
     if (e.target.closest('#rah-photo') || e.target.closest('#rah-race-label')) window.rahOpenRace();
   });
 
+  // ── Attract glow — invite the click if the photo hasn't been played yet ────
+  let rahHasRaced = false;
+  setTimeout(() => {
+    if (rahHasRaced) return;
+    const frame = document.getElementById('rah-photo-frame');
+    const tip   = document.getElementById('rah-clickme');
+    if (frame) frame.classList.add('rah-photo-glow');
+    if (tip) tip.classList.add('rah-clickme-show');
+  }, 5000);
+
   // ── Entry point ───────────────────────────────────────────────────────────
   window.rahOpenRace = function() {
     if (document.getElementById('rah-race-ov')) return;
+    rahHasRaced = true;
+    const frame = document.getElementById('rah-photo-frame');
+    const tip   = document.getElementById('rah-clickme');
+    if (frame) frame.classList.remove('rah-photo-glow');
+    if (tip) tip.classList.remove('rah-clickme-show');
     const photoEl = document.getElementById('rah-photo');
     const ov = buildOverlay(photoEl || document.body);
 
