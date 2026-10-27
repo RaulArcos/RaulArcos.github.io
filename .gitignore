@@ -1,0 +1,24 @@
+# Local agent state, screenshots, test evidence and internal task history.
+/.atl/
+/.claude/
+/odd/
+
+# Private infrastructure audit and host-specific deployment tooling stay local.
+/docs/racing-security.md
+/server/deploy-vps.sh
+
+# Runtime dependencies, generated coverage and local credentials.
+node_modules/
+/coverage/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS metadata.
+.DS_Store
+Thumbs.db
+Desktop.ini

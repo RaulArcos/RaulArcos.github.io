@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="./racing-lab.css?v=20261024-phone-ready">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -30,7 +31,7 @@
     .rah-social-icon { width: 15px; height: 15px; display: inline-block; vertical-align: middle; margin-right: 8px; opacity: 0.9; }
 
     /* ── Mobile layout — desktop is untouched below 761px this only kicks in ── */
-    @media (max-width: 760px) {
+    @media (max-width: 1000px) {
       #site-header { flex-wrap: wrap; padding: 12px 16px !important; row-gap: 10px; }
       .rah-nav { order: 3; width: 100%; justify-content: center; gap: 14px !important; font-size: 10px !important; flex-wrap: wrap; }
 
@@ -65,6 +66,7 @@
       <span style="color: #5B5B58;" data-i18n="nav.portfolio">PORTFOLIO</span>
     </div>
     <nav class="rah-nav" style="display: flex; align-items: center; gap: 28px;">
+      <a href="#racing-lab" data-i18n="nav.racing" style="color: #E2483D; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">RACING LAB</a>
       <a href="#experience" data-i18n="nav.experience" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">EXPERIENCE</a>
       <a href="#projects" data-i18n="nav.projects" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">PROJECTS</a>
       <a href="#timeline" data-i18n="nav.timeline" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">TIMELINE</a>
@@ -95,6 +97,9 @@
       <div data-rh data-rh-delay="240" style="transition: border-color 0.3s, background 0.3s; display: grid; gap: 9px; margin-top: 34px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; color: #76766F;">
         <div data-i18n="hero.base">BASE — CÁDIZ, SPAIN · 36.53°N 6.29°W</div>
         <div data-i18n="hero.now">NOW — SOFTWARE ENGINEER @ GTD · SIDE PROJECT: IRCOPILOT.COM</div>
+      </div>
+      <div style="margin-top: 32px;">
+        <a href="#racing-lab" class="rl-hero-cta" data-i18n="hero.racing">▶ RACE ON THIS SITE — RACING LAB</a>
       </div>
       <div data-rh data-rh-delay="320" style="transition: border-color 0.3s, background 0.3s; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.1em;">
         <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 10px 18px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-github.svg" class="rah-social-icon" alt="" style="filter: none;"><span data-i18n-social="github">GITHUB</span> ↗</a>
@@ -130,6 +135,8 @@
       <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.18em; color: #76766F; padding-right: 0;">C++ <span style="color: #E2483D;">//</span> PYTHON <span style="color: #E2483D;">//</span> ROS <span style="color: #E2483D;">//</span> OPENCV <span style="color: #E2483D;">//</span> YOLO <span style="color: #E2483D;">//</span> GSTREAMER <span style="color: #E2483D;">//</span> DDS <span style="color: #E2483D;">//</span> MQTT <span style="color: #E2483D;">//</span> FPGA · XDMA <span style="color: #E2483D;">//</span> CAN BUS <span style="color: #E2483D;">//</span> AWS <span style="color: #E2483D;">//</span> NODE-RED <span style="color: #E2483D;">//</span>&nbsp;</span>
     </div>
   </div>
+
+  <div id="racing-lab-slot"></div>
 
   <section id="experience" data-screen-label="Experience" style="max-width: 1440px; margin: 0 auto; padding: 96px 64px 80px; box-sizing: border-box;">
     <div data-rh style="transition: border-color 0.3s, background 0.3s; display: flex; align-items: baseline; gap: 20px; margin-bottom: 44px;">
@@ -292,8 +299,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid #E2483D; border-left: 2px solid #E2483D;"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid #E2483D; border-right: 2px solid #E2483D;"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/ircopilot.jpeg" alt="iRCopilot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/ircopilot2.png" alt="iRCopilot icon" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/ircopilot.jpeg" alt="iRCopilot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/ircopilot2.png" alt="iRCopilot icon" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #E2483D; margin-bottom: 8px; display: inline-flex; align-items: center; gap: 7px;"><span style="width: 5px; height: 5px; border-radius: 50%; background: #E2483D; animation: rahBlink 1.6s steps(1) infinite;"></span><span data-i18n="tl.irc.date">2026 — NOW · PERSONAL PROJECT</span></div>
             <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">iRCopilot</h3>
@@ -324,8 +331,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/riyad2025.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/riyad2025-2.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/riyad2025.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/riyad2025-2.jpg" alt="Riyadh 2025" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div data-i18n="tl.riyadh.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">SEP — DEC 2025 · DEPLOYMENT</div>
             <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Riyadh, Saudi Arabia</h3>
@@ -341,7 +348,7 @@
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <img src="assets/rahoverlay2.gif" alt="iRacing Overlays" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <img loading="lazy" decoding="async" src="assets/rahoverlay2.gif" alt="iRacing Overlays" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
             <div style="margin-top: 20px;">
               <div data-i18n="tl.overlays.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 — NOW · OPEN SOURCE</div>
               <h3 style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">iRacing Overlays</h3>
@@ -366,8 +373,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/university2024-2.png" alt="TFG autonomous robot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/university2024.jpg" alt="Graduation" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/university2024-2.png" alt="TFG autonomous robot" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/university2024.jpg" alt="Graduation" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div data-i18n="tl.univ.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · DEGREE PROJECT + GRADUATION</div>
             <h3 data-i18n="tl.univ.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">University of Cádiz — end</h3>
@@ -383,8 +390,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/formulagades2024.jpg" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/formulagades2024-2.JPG" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades2024.jpg" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades2024-2.JPG" alt="Formula Student Spain 2024" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div data-i18n="tl.fs24.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2024 · FORMULA STUDENT</div>
             <h3 data-i18n="tl.fs24.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Spain</h3>
@@ -418,8 +425,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/formulagades2022.jpg" alt="FS Germany 2022" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/formulagades02022-2.jpg" alt="FS Spain 2022" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades2022.jpg" alt="FS Germany 2022" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades02022-2.jpg" alt="FS Spain 2022" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div data-i18n="tl.fs22.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">AUG 2022 · FORMULA STUDENT</div>
             <h3 data-i18n="tl.fs22.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS GERMANY & SPAIN</h3>
@@ -443,8 +450,8 @@
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-              <img src="assets/formulagades2021.jpg" alt="FS Czech Republic 2021" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
-              <img src="assets/formulagades2021-2.jpg" alt="FS Spain 2021" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades2021.jpg" alt="FS Czech Republic 2021" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
+              <img loading="lazy" decoding="async" src="assets/formulagades2021-2.jpg" alt="FS Spain 2021" style="width: 100%; height: 150px; object-fit: contain; background: #0B0B0C; display: block;">
             </div>
             <div data-i18n="tl.fs21.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2021 · FORMULA STUDENT</div>
             <h3 data-i18n="tl.fs21.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">FS CZECH REPUBLIC & SPAIN</h3>
@@ -469,7 +476,7 @@
             <div style="position: absolute; top: -1px; right: -1px; width: 12px; height: 12px; border-top: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; left: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-left: 2px solid rgba(255,255,255,0.22);"></div>
             <div style="position: absolute; bottom: -1px; right: -1px; width: 12px; height: 12px; border-bottom: 2px solid rgba(255,255,255,0.22); border-right: 2px solid rgba(255,255,255,0.22);"></div>
-            <img src="assets/formulagades2018.jpg" alt="Formula Gades 2018" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
+            <img loading="lazy" decoding="async" src="assets/formulagades2018.jpg" alt="Formula Gades 2018" style="width: 100%; height: 190px; object-fit: contain; background: #0B0B0C; display: block;">
             <div style="margin-top: 20px;">
               <div data-i18n="tl.fg.date" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; color: #9A9A95; margin-bottom: 8px;">2018 · FORMULA STUDENT</div>
               <h3 data-i18n="tl.fg.title" style="font-family: Antonio, sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; margin: 0 0 8px; letter-spacing: 0.01em;">Formula Gades</h3>
@@ -492,10 +499,10 @@
     </p>
     <div data-rh data-rh-delay="240" style="transition: border-color 0.3s, background 0.3s; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 40px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.1em;">
       <a href="/cdn-cgi/l/email-protection#196b786c75786b7a766a717c6b6b7c6b78597e74787075377a7674" style="display: inline-flex; align-items: center; color: #0B0B0C; background: #E2483D; text-decoration: none; padding: 15px 28px; transition: filter 0.25s;" style-hover="filter: brightness(1.15);"><span data-i18n="contact.email">EMAIL ME</span></a>
-      <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-github.svg" style="width:15px;height:15px;" alt="">GITHUB ↗</a>
-      <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-linkedin.svg" style="width:15px;height:15px;" alt="">LINKEDIN ↗</a>
-      <a href="https://www.instagram.com/raularcosherrera/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-instagram.svg" style="width:15px;height:15px;" alt="">INSTAGRAM ↗</a>
-      <a href="https://members.iracing.com/membersite/member/Home.do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img src="assets/icon-iracing.svg" style="width:15px;height:15px;" alt="">IRACING ↗</a>
+      <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img loading="lazy" decoding="async" src="assets/icon-github.svg" style="width:15px;height:15px;" alt="">GITHUB ↗</a>
+      <a href="https://www.linkedin.com/in/ra%C3%BAl-arcos-herrera-b11514175/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img loading="lazy" decoding="async" src="assets/icon-linkedin.svg" style="width:15px;height:15px;" alt="">LINKEDIN ↗</a>
+      <a href="https://www.instagram.com/raularcosherrera/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img loading="lazy" decoding="async" src="assets/icon-instagram.svg" style="width:15px;height:15px;" alt="">INSTAGRAM ↗</a>
+      <a href="https://members.iracing.com/membersite/member/Home.do" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 8px; color: #EDEDEA; text-decoration: none; border: 1px solid rgba(255,255,255,0.22); padding: 15px 22px; transition: background 0.25s, color 0.25s;" style-hover="background: #EDEDEA; color: #0B0B0C;"><img loading="lazy" decoding="async" src="assets/icon-iracing.svg" style="width:15px;height:15px;" alt="">IRACING ↗</a>
     </div>
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 96px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.09); font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; color: #5B5B58;">
       <span>© 2026 RAÚL ARCOS HERRERA — CÁDIZ, ES</span>
@@ -505,7 +512,81 @@
 
 </div>
 </x-dc>
-<script src="./racing-game.js"></script>
+<template id="racing-lab-template">
+  <section id="racing-lab" class="rl" data-screen-label="Racing Lab" aria-labelledby="rl-title">
+    <div class="rl-inner">
+      <div id="rl-content">
+      <div class="rl-head">
+        <span class="rl-kicker" data-lab-i18n="kicker">00 — RACING LAB</span>
+        <div class="rl-rule"></div>
+      </div>
+      <h2 id="rl-title" class="rl-title" data-lab-i18n="title">Race the circuits I built.</h2>
+      <p class="rl-lead" data-lab-i18n="lead">Three original circuits and the legacy track. Pick one: nothing starts, and no keys are captured, until you press Start.</p>
+      <p class="rl-status" role="status" data-lab-status></p>
+
+
+      <div class="rl-grid">
+        <article class="rl-card" data-lab-track="cadiz-city-v3">
+          <span class="rl-presence" data-lab-presence="cadiz-city-v3" role="status" hidden></span>
+          <div class="rl-preview" data-lab-preview="cadiz-city-v3" aria-hidden="true"></div>
+          <div class="rl-card-body">
+            <div class="rl-card-top"><h3 class="rl-card-name" data-lab-name="cadiz-city-v3">Cádiz City</h3><span class="rl-diff" data-lab-diff="cadiz-city-v3">Medium</span></div>
+            <p class="rl-card-desc" data-lab-desc="cadiz-city-v3">Cádiz coastline: La Caleta, Genovés, Puerta de Tierra, Playa Victoria and Cortadura.</p>
+            <p class="rl-target" data-lab-target="cadiz-city-v3">Time to beat — no time yet</p>
+            <button type="button" class="rl-btn" data-race-track="cadiz-city-v3" data-lab-i18n="track.cta" data-lab-arg="cadiz-city-v3">RACE CÁDIZ CITY ▶</button>
+          </div>
+        </article>
+        <article class="rl-card" data-lab-track="spa-francorchamps-v3">
+          <span class="rl-presence" data-lab-presence="spa-francorchamps-v3" role="status" hidden></span>
+          <div class="rl-preview" data-lab-preview="spa-francorchamps-v3" aria-hidden="true"></div>
+          <div class="rl-card-body">
+            <div class="rl-card-top"><h3 class="rl-card-name" data-lab-name="spa-francorchamps-v3">Spa-Francorchamps</h3><span class="rl-diff" data-lab-diff="spa-francorchamps-v3">Hard</span></div>
+            <p class="rl-card-desc" data-lab-desc="spa-francorchamps-v3">A simplified Spa outline: La Source, Eau Rouge, Kemmel, Pouhon and Blanchimont.</p>
+            <p class="rl-target" data-lab-target="spa-francorchamps-v3">Time to beat — no time yet</p>
+            <button type="button" class="rl-btn" data-race-track="spa-francorchamps-v3" data-lab-i18n="track.cta" data-lab-arg="spa-francorchamps-v3">RACE SPA-FRANCORCHAMPS ▶</button>
+          </div>
+        </article>
+        <article class="rl-card" data-lab-track="noob-gp-v3">
+          <span class="rl-presence" data-lab-presence="noob-gp-v3" role="status" hidden></span>
+          <div class="rl-preview" data-lab-preview="noob-gp-v3" aria-hidden="true"></div>
+          <div class="rl-card-body">
+            <div class="rl-card-top"><h3 class="rl-card-name" data-lab-name="noob-gp-v3">Noob GP</h3><span class="rl-diff" data-lab-diff="noob-gp-v3">Easy</span></div>
+            <p class="rl-card-desc" data-lab-desc="noob-gp-v3">Long mountain grand prix: sweeping esses, a downhill double-apex and a fast final bend.</p>
+            <p class="rl-target" data-lab-target="noob-gp-v3">Time to beat — no time yet</p>
+            <button type="button" class="rl-btn" data-race-track="noob-gp-v3" data-lab-i18n="track.cta" data-lab-arg="noob-gp-v3">RACE NOOB GP ▶</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="rl-side">
+        <article class="rl-card rl-card-pad" data-lab-legacy>
+          <span class="rl-label" data-lab-i18n="legacy.label">LEGACY CIRCUIT</span>
+          <h3 class="rl-card-name" data-lab-i18n="legacy.title">The original circuit</h3>
+          <p class="rl-card-desc" data-lab-i18n="legacy.desc">The original outline with a wider road and a fresh leaderboard. Earlier records are kept separately.</p>
+          <button type="button" class="rl-btn" data-race-track="legacy" data-lab-i18n="legacy.cta">RACE THE LEGACY CIRCUIT ▶</button>
+        </article>
+        <article class="rl-card rl-card-pad" data-lab-ghost>
+          <span class="rl-label" data-lab-i18n="ghost.label">PERSONAL GHOST</span>
+          <h3 class="rl-card-name" data-lab-i18n="ghost.title">Race your own best lap</h3>
+          <p class="rl-card-desc" data-lab-i18n="ghost.body">Record your own first valid lap and it becomes your ghost on this device. Only a faster valid lap replaces it. No reference lap by anyone else is included.</p>
+        </article>
+        <article class="rl-card rl-card-pad" data-lab-iracing>
+          <span class="rl-label" data-lab-i18n="ir.label">IRACING IDENTITY</span>
+          <h3 class="rl-card-name">RaulArcos2</h3>
+          <p class="rl-meta"><span class="rl-label" data-lab-i18n="ir.cust">CUSTOMER ID</span> <span class="rl-val">533432</span></p>
+          <p class="rl-card-desc" data-lab-i18n="ir.note">Static identity only. Ratings and results are unavailable: iRacing API access is not connected, so no live stats are shown. The profile page may ask you to log in to iRacing.</p>
+          <a class="rl-btn rl-btn-link" href="https://members.iracing.com/membersite/member/CareerStats.do?custid=533432" target="_blank" rel="noopener noreferrer" data-lab-i18n="ir.link">OPEN IRACING PROFILE ↗</a>
+        </article>
+      </div>
+    </div>
+    </div>
+  </section>
+</template>
+<script src="./racing-config.js?v=20261024-phone-ready"></script>
+<script src="./racing-core.js?v=20261024-phone-ready"></script>
+<script src="./racing-live.js?v=20261024-phone-ready"></script>
+ <script src="./racing-game.js?v=20261024-phone-ready"></script>
+<script src="./racing-lab.js?v=20261024-phone-ready"></script>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   componentDidMount() {
@@ -586,10 +667,12 @@ const RAH_I18N = {
     'nav.projects': 'PROJECTS',
     'nav.timeline': 'TIMELINE',
     'nav.contact': 'CONTACT',
+    'nav.racing': 'RACING LAB',
     'hero.bio': 'Software engineer at GTD — Defense & Security, building multi-threaded, mission-critical systems in C++ and Python: computer vision, FPGA pipelines and real-time comms. Off the clock, I build racing software.',
     'hero.base': 'BASE — CÁDIZ, SPAIN · 36.53°N 6.29°W',
     'hero.now': 'NOW — SOFTWARE ENGINEER @ GTD · SIDE PROJECT: IRCOPILOT.COM',
     'hero.email': 'EMAIL ME',
+    'hero.racing': '▶ RACE ON THIS SITE — RACING LAB',
     'hero.clickme': 'CLICK ME ↓',
     'exp.title': '01 — EXPERIENCE',
     'exp.sub': 'HISTORY',
@@ -658,10 +741,12 @@ const RAH_I18N = {
     'nav.projects': 'PROYECTOS',
     'nav.timeline': 'TRAYECTORIA',
     'nav.contact': 'CONTACTO',
+    'nav.racing': 'RACING LAB',
     'hero.bio': 'Ingeniero de software en GTD — Defensa y Seguridad, desarrollando sistemas críticos multihilo en C++ y Python: visión artificial, pipelines FPGA y comunicaciones en tiempo real. En mi tiempo libre, construyo software para el sim racing.',
     'hero.base': 'BASE — CÁDIZ, ESPAÑA · 36.53°N 6.29°W',
     'hero.now': 'AHORA — SOFTWARE ENGINEER @ GTD · PROYECTO PROPIO: IRCOPILOT.COM',
     'hero.email': 'ESCRÍBEME',
+    'hero.racing': '▶ CORRE EN ESTA WEB — RACING LAB',
     'hero.clickme': 'CLÍCAME ↓',
     'exp.title': '01 — EXPERIENCIA',
     'exp.sub': 'HISTORIAL',
@@ -738,6 +823,10 @@ window.rahApplyLang = function(lang) {
   const btn = document.getElementById('rah-lang');
   if (btn) btn.textContent = lang === 'en' ? 'EN / ES' : 'ES / EN';
   localStorage.setItem('rah-lang', lang);
+  // Announce the language to code outside the DC template (racing-lab.js)
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('data-language', lang);
+  document.dispatchEvent(new CustomEvent('rah-lang', { detail: { lang } }));
 };
 
 window.rahToggleLang = function() {

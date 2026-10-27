@@ -1,0 +1,7 @@
+# Runtime data must never be committed.
+data/
+records/
+*.tmp
+*.log
+.env
+.env.*
