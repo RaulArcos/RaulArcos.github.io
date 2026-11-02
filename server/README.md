@@ -66,6 +66,8 @@ POST requires an allowed `Origin` and `Content-Type: application/json`. CORS hea
 
 Active rotation: `cadiz-city-v3`, `spa-francorchamps-v3`, `noob-gp-v3`. Previous v2/v1/original rotations remain readable in their own namespaces; only the current layout can submit to the current weekly challenge. Free play is separate. No record migration or deletion is caused by a layout change.
 
+Every lap is replay-checked before it is stored, using the game's own `racing-core.js` physics and geometry (deploy it beside `server.cjs`; startup fails if tracks disagree). The recorded path must start and end on the line, stay on the road, cross every sector forward in order, be sampled at least every 150 ms, and never exceed the car's terminal speed: per sample (×1.2 slack) and over any one-second window (×1.01). Failures return `422 implausible_lap` with a reason code. This stops console edits to speed, lap time or position; a carefully scripted lap that respects the physics can still pass. Only the three current tracks accept new laps.
+
 Names contain letters/numbers first, then letters/numbers/spaces/`._-`, up to24 characters for scores. Identity is case-insensitive. Lap times are finite 5000–180000ms; there are 2–4000 finite samples, first at 0, final within 1 ms of the lap time, monotonic timestamps and 900×560 world bounds. A slower or rejected lap does not write.
 
 Data is one atomic file per driver/track/challenge (`temp`, fsync, rename) and a synchronous single-process index. Do not run multiple writers on the same directory. When the record cap is reached, expired weekly records may be pruned; otherwise new drivers receive 503 while existing records can still improve. Corrupt records are skipped.

@@ -47,7 +47,7 @@ To disable network play explicitly, set `window.RACING_API_URL = ''` before load
 
 Real desktop Chrome checks cover previews before Play, preview repair, separate spawns, peer movement, rendered names, Quit and React root health. Phone/tablet Chrome emulation passes, including native multi-touch and independent release. Actual iPhone/Safari and Android-device usability still needs manual checking; see [mobile readiness and device checklist](docs/mobile-readiness.md).
 
-See [game details](docs/racing-game.md) and [backend configuration and API](server/README.md). Scores and positions are community submissions, not authoritative or cheat-proof race results.
+See [game details](docs/racing-game.md) and [backend configuration and API](server/README.md). Scores and positions are community submissions, not authoritative or cheat-proof race results. The API replay-checks each lap against the real physics, so console speed/time edits are rejected.
 
 Smoothing is browser-side: it does not raise the existing 200ms live-position update rate or change the VPS service/limits. More simultaneous racers still add normal server traffic; this is not a maximum-capacity benchmark. Card data refreshes every 5 seconds with known racers, otherwise every 15 seconds; hidden documents do not poll. A newly arriving remote racer is discovered on the next idle presence check.
 

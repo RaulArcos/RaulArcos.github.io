@@ -6,9 +6,12 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const crypto = require('node:crypto');
+// Track geometry and physics come from the game itself: deployed beside this file, or the repo root.
+const Core = require(fs.existsSync(path.join(__dirname, 'racing-core.js')) ? './racing-core.js' : '../racing-core.js');
 
 // Keep track order and archived weekly-challenge rotation aligned with racing-core.js.
 const TRACK_IDS = ['cadiz-city-v3', 'spa-francorchamps-v3', 'noob-gp-v3'];
+if (JSON.stringify(Core.TRACK_IDS) !== JSON.stringify(TRACK_IDS)) throw new Error('racing-core.js tracks do not match the server');
 const ARCHIVED_ROTATIONS = [
   ['cadiz-city-v2', 'spa-francorchamps-v2', 'noob-gp-v2'],
   ['cadiz-city-v1', 'spa-francorchamps-v1', 'sierra-gp'],
@@ -83,6 +86,7 @@ function loadConfig(env = process.env) {
     readRateLimit: intEnv(env, 'RACING_READ_RATE_LIMIT', 240, 1, 1000000),
     rateWindowMs: intEnv(env, 'RACING_RATE_WINDOW_MS', 60000, 1000, 3600000),
     maxRateKeys: 10000,
+    verifyReplays: true,
     now: () => Date.now(),
     logger: (msg) => console.error(msg)
   };
@@ -122,9 +126,10 @@ function validateChallenge(id, trackId, nowMs, forWrite) {
   return info.id;
 }
 
-function validateLap(body, nowMs) {
+function validateLap(body, nowMs, verifyReplays) {
   if (!body || typeof body !== 'object' || Array.isArray(body)) throw new HttpError(400, 'invalid_json', 'body must be a JSON object');
   const trackId = validateTrack(body.trackId);
+  if (!TRACK_IDS.includes(trackId)) throw new HttpError(400, 'invalid_track', 'only current tracks accept laps');
   const challengeId = validateChallenge(body.challengeId === undefined ? null : body.challengeId, trackId, nowMs, true);
   const name = validateName(body.name);
   const ms = body.ms;
@@ -144,6 +149,10 @@ function validateLap(body, nowMs) {
   }
   if (f[0][0] !== 0) throw new HttpError(400, 'invalid_frames', 'first frame must be at 0 ms');
   if (Math.abs(last - ms) > 1) throw new HttpError(400, 'invalid_frames', 'last frame must match the lap time');
+  if (verifyReplays) {
+    const reason = Core.verifyLapReplay(Core.trackById(trackId), ms, frames);
+    if (reason) throw new HttpError(422, 'implausible_lap', `lap replay rejected: ${reason}`);
+  }
   return { trackId, challengeId, name, ms: round3(ms), frames };
 }
 
@@ -378,7 +387,7 @@ function createServer(config) {
     let body;
     try { body = JSON.parse(text); } catch { throw new HttpError(400, 'invalid_json', 'body is not valid JSON'); }
     const nowMs = cfg.now();
-    const lap = validateLap(body, nowMs);
+    const lap = validateLap(body, nowMs, cfg.verifyReplays);
     const result = store.submit(lap, weeklyChallenge(nowMs).id);
     if (result === 'full') throw new HttpError(503, 'storage_full', 'record limit reached; try again later');
     send(res, 200, { saved: result === 'saved' });

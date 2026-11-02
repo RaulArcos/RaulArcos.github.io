@@ -380,6 +380,56 @@
     return { ms: Math.round(ms), frames: out };
   }
 
+  // ── Replay plausibility (used by the API before storing a lap) ────────────
+  // A lap is accepted only if its recorded path could come from the stock physics: it starts and ends
+  // on the line, stays on the road, crosses every sector in order, never outruns the car's terminal
+  // speed and is sampled densely enough to check. Console edits to speed, time or position fail here.
+  // This raises the bar; it cannot prove that a person (rather than a careful script) drove the lap.
+  const REPLAY = { MAX_GAP_MS: 150, STEP_SLACK: 1.2, STEP_PAD: 1.5, WINDOW_MS: 1000, WINDOW_SLACK: 1.01, TRACK_PAD: 2.5, LINE_PAD: 3 };
+
+  function distToSegment(px, py, x1, y1, x2, y2) {
+    const dx = x2 - x1, dy = y2 - y1, l2 = dx * dx + dy * dy;
+    const t = l2 ? Math.max(0, Math.min(1, ((px - x1) * dx + (py - y1) * dy) / l2)) : 0;
+    return Math.hypot(px - (x1 + t * dx), py - (y1 + t * dy));
+  }
+
+  // Returns null for a plausible lap, otherwise a short reason code.
+  function verifyLapReplay(track, ms, frames) {
+    if (!track || track.legacy || !Array.isArray(track.points)) return 'unknown_track';
+    if (!isNum(ms) || ms < track.minLapMs) return 'too_fast';
+    if (!Array.isArray(frames) || frames.length < 2) return 'no_replay';
+    const first = frames[0], last = frames[frames.length - 1];
+    if (first[0] !== 0 || Math.abs(last[0] - ms) > 2) return 'bad_timing';
+    const finish = makeGate(track.points, track.startIndex || 0, track.width);
+    const onLine = f => distToSegment(f[1], f[2], finish.x1, finish.y1, finish.x2, finish.y2) <= REPLAY.LINE_PAD;
+    if (!onLine(first) || !onLine(last)) return 'not_at_line';
+    const gates = track.sectors.map(i => makeGate(track.points, i, track.width));
+    const top = TOP_SPEED_PPS / 1000, road = track.width / 2 - CAR_R + REPLAY.TRACK_PAD;
+    const cum = [0];
+    let next = 0;
+    for (let i = 1; i < frames.length; i++) {
+      const a = frames[i - 1], b = frames[i], dt = b[0] - a[0];
+      if (!(dt > 0) || dt > REPLAY.MAX_GAP_MS) return 'sparse_replay';
+      const d = Math.hypot(b[1] - a[1], b[2] - a[2]);
+      if (d > top * dt * REPLAY.STEP_SLACK + REPLAY.STEP_PAD) return 'too_fast';
+      const parts = Math.max(1, Math.ceil(d / 4));
+      for (let k = 1; k <= parts; k++) {
+        const w = k / parts;
+        if (nearestOnRing(track.points, a[1] + (b[1] - a[1]) * w, a[2] + (b[2] - a[2]) * w).dist > road) return 'off_track';
+      }
+      if (next < gates.length) { const x = gateCrossing(a[1], a[2], b[1], b[2], gates[next]); if (x && x.forward) next++; }
+      cum.push(cum[i - 1] + d);
+    }
+    if (next < gates.length) return 'missed_checkpoint';
+    // Sustained speed over any one-second window must stay at the car's terminal speed.
+    for (let i = 1, j = 0; i < frames.length; i++) {
+      while (j + 1 < i && frames[i][0] - frames[j + 1][0] >= REPLAY.WINDOW_MS) j++;
+      const span = frames[i][0] - frames[j][0];
+      if (span >= REPLAY.WINDOW_MS && cum[i] - cum[j] > top * span * REPLAY.WINDOW_SLACK + REPLAY.STEP_PAD) return 'too_fast';
+    }
+    return null;
+  }
+
   // ── Race session (no DOM) ─────────────────────────────────────────────────
   // New tracks: simulated clock (deterministic), ordered sector gates, flying start.
   // `track.legacy`: original rules — wall clock, any-order sectors, 200-step cooldown, 5 s minimum.
@@ -665,6 +715,7 @@
     tracks, TRACK_IDS, trackById, isTrackId, weeklyChallenge, isChallengeId,
     analyzeTrack, makeGate, gateCrossing, segsIntersect, nearestOnRing, smoothRing, resampleRing,
     createCar, stepCar, createSession, createRecorder, ghostAt, sanitizeGhost, createPeerInterpolator,
+    verifyLapReplay, REPLAY,
     cleanName, nameKey, parseBoard, scopeOf, scoresKey, ghostKey,
     loadScores, recordScore, loadGhost, saveGhostIfBetter, recordLap,
     normalizeApiUrl, createApi,

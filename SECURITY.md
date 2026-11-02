@@ -4,7 +4,7 @@ This repository contains a static website and an optional, dependency-free commu
 
 ## Public data and account access
 
-- Names, lap times, ghosts and live positions are community submissions. Validation and rate limits do not prove identity or prevent cheating.
+- Names, lap times, ghosts and live positions are community submissions. Server-side replay checks reject laps that break the game physics (edited speed, time or position), but validation and rate limits do not prove identity or stop a carefully scripted lap.
 - CORS/origin checks restrict browsers, not scripts that forge headers. Do not treat an allowed Origin as authentication.
 - Racing API requests omit browser credentials. The iRacing integration is a static public profile link, not OAuth or access to a user's iRacing account.
 - Firebase browser configuration is public client configuration, not an owner account password. Database permissions and API restrictions must still be configured appropriately.

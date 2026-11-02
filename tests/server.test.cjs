@@ -36,7 +36,9 @@ async function start(dataDir, overrides = {}) {
     now: () => clock.now,
     logger: () => {},
     writeRateLimit: 10000,
-    readRateLimit: 10000
+    readRateLimit: 10000,
+    // Transport/storage tests use synthetic frames; tests/replay.test.cjs covers replay verification.
+    verifyReplays: false
   }, overrides);
   const server = createServer(config);
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
