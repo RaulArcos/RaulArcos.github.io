@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiclass Standings Overlay</title>
+    <link rel="stylesheet" href="assets/standings/standings.css">
+    <link rel="stylesheet" href="assets/common/css/overlay-theme.css">
+    <link rel="stylesheet" href="assets/common/css/race-system.css">
+    <script src="assets/common/js/overlay_theme.js"></script>
+    <script src="assets/common/js/race_metadata.js"></script>
+    <script src="assets/standings/standings.js"></script>
+    <script src="assets/common/js/socket.io.min.js"></script>
+<script src="assets/common/js/overlay_settings.js"></script>
+<script src="assets/common/js/demo_race.js"></script><script src="assets/common/js/demo_scenario.js"></script><script src="assets/common/js/demo_adapter.js"></script>
+</head>
+<body>
+    <div class="standings-container rah-card rah-race pywebview-drag-region">
+        <div class="rah-card__header">
+            <span>Standings <span id="st-session">--</span></span>
+            <span id="st-status" class="rah-status rah-status--warn">Waiting for data</span>
+        </div>
+        <div class="rah-row st-row st-head">
+            <span class="st-overall">Pos</span><span class="st-class">Cls</span><span class="st-number">#</span><span class="st-name">Driver</span><span class="st-lap">Lap</span>
+            <span class="st-best">Best</span><span class="st-last">Last</span><span class="st-gap">Gap</span><span class="st-int">Int</span><span class="st-pit"></span>
+            <span class="race-license">Lic / SR</span><span class="race-rating">iR</span><span class="race-gain">±P</span>
+        </div>
+        <div id="st-groups"></div>
+        <div class="st-footer rah-footer">
+            <span id="st-summary">--</span>
+            <span id="st-basis">--</span>
+            <span class="st-note">Gap: overall leader · Int: class ahead · ±P: start gain</span>
+        </div>
+    </div>
+</body>
+</html>

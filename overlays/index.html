@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RAH Overlays — free iRacing overlays</title>
+<meta name="description" content="Free, open-source iRacing overlays for driving and streaming: relative, standings, F1-style delta, input telemetry, radar and more. Download for Windows.">
+<meta property="og:title" content="RAH Overlays — free iRacing overlays">
+<meta property="og:description" content="Relative, standings, F1-style delta, inputs, radar and more. Free, open source, made for driving and for OBS.">
+<meta property="og:image" content="https://raularcos.github.io/overlays/demo/assets/delta/images/preview-original.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="stylesheet" href="demo/assets/common/css/rah-fonts.css">
+<link rel="stylesheet" href="page.css?v=1">
+<script src="page.js?v=1" defer></script>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="top__brand" href="../"><span class="red">RAH</span><span class="dim">OVERLAYS</span></a>
+  <nav class="top__nav">
+    <a href="#overlays" data-i18n="nav.overlays">OVERLAYS</a>
+    <a href="#how" data-i18n="nav.how">HOW TO</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <a href="../" data-i18n="nav.portfolio">PORTFOLIO</a>
+  </nav>
+  <div class="top__right">
+    <button id="lang" class="lang" type="button" aria-label="Change language">EN / ES</button>
+    <a class="btn btn--red btn--small" data-download href="https://github.com/RaulArcos/rah-iracing-overlay/releases/latest" data-i18n="cta.short">DOWNLOAD</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero__text">
+      <div class="kicker reveal" data-i18n="hero.kicker">FREE · OPEN SOURCE · WINDOWS</div>
+      <h1 class="reveal" style="--d:60ms"><span>iRacing</span><span class="red">overlays</span></h1>
+      <p class="hero__lead reveal" style="--d:120ms" data-i18n="hero.lead">I made these because I wanted overlays that looked good on stream without paying a subscription or making an account. They're free, open source and run on your own PC: open the app, switch on the ones you want, and they sit on top of the game or go straight into OBS.</p>
+      <div class="hero__ctas reveal" style="--d:180ms">
+        <a class="btn btn--red" data-download href="https://github.com/RaulArcos/rah-iracing-overlay/releases/latest">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-i18n="cta.download">DOWNLOAD FOR WINDOWS</span>
+        </a>
+        <a class="btn" href="https://github.com/RaulArcos/rah-iracing-overlay" target="_blank" rel="noopener" data-i18n="cta.github">SOURCE ON GITHUB</a>
+      </div>
+      <div id="release" class="hero__release mono reveal" style="--d:220ms" data-i18n="hero.release">LATEST RELEASE ON GITHUB</div>
+    </div>
+    <div class="hero__stage reveal" style="--d:140ms">
+      <div class="frame">
+        <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br br-"></span>
+        <div class="frame__clip">
+          <div class="stage stage--hero" data-overlay="delta" data-hero></div>
+          <span class="scan" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div class="frame__caption mono"><span data-i18n="hero.caption">DELTA · LIVE IN YOUR BROWSER</span><span class="red">● LIVE</span></div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee__track" id="marquee"></div></div>
+
+  <section id="overlays" class="section">
+    <div class="section__label"><span data-i18n="ov.title">01 — THE OVERLAYS</span><i></i><span class="dim" id="count">14</span></div>
+    <div class="section__intro">
+      <p data-i18n="ov.intro">Everything below is running live in your browser with a made-up race. It's exactly what you get in the app, just without iRacing behind it. Click any of them to see it bigger.</p>
+      <div class="seg" role="radiogroup" aria-label="Style">
+        <span class="seg__thumb" aria-hidden="true"></span>
+        <button type="button" role="radio" data-theme="original" aria-checked="true">ORIGINAL</button>
+        <button type="button" role="radio" data-theme="glass" aria-checked="false">GLASS</button>
+      </div>
+    </div>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="section__label"><span data-i18n="how.title">02 — HOW TO USE IT</span><i></i><span class="dim" data-i18n="how.sub">3 STEPS</span></div>
+    <ol class="steps">
+      <li class="reveal"><span class="steps__n">01</span><h3 data-i18n="how.1.t">Download and unzip</h3><p data-i18n="how.1.p">Grab the zip from GitHub and extract it wherever you like. There's nothing to install.</p></li>
+      <li class="reveal" style="--d:80ms"><span class="steps__n">02</span><h3 data-i18n="how.2.t">Open it and pick</h3><p data-i18n="how.2.p">Run RAH_Telemetry_Overlay.exe, choose an overlay and flip its switch. It shows up over iRacing. Hit Position to drag it where you want it.</p></li>
+      <li class="reveal" style="--d:160ms"><span class="steps__n">03</span><h3 data-i18n="how.3.t">Streaming? Add it to OBS</h3><p data-i18n="how.3.p">Copy the overlay's OBS link from the app and add it as a Browser Source, using the width and height the app gives you. Done.</p></li>
+    </ol>
+
+    <div class="custom reveal">
+      <div>
+        <div class="section__label section__label--small"><span data-i18n="custom.title">MAKE IT YOURS</span><i></i></div>
+        <p data-i18n="custom.p">Each overlay has its own settings in the app, with a live preview while you play with them. OBS picks up the changes within a couple of seconds, no need to refresh the source.</p>
+      </div>
+      <ul class="chips mono">
+        <li data-i18n="custom.c1">ORIGINAL OR GLASS</li>
+        <li data-i18n="custom.c2">OPACITY</li>
+        <li data-i18n="custom.c3">BACKGROUND OPACITY</li>
+        <li data-i18n="custom.c4">SIZE 50–200%</li>
+        <li data-i18n="custom.c5">ACCENT COLOUR</li>
+        <li data-i18n="custom.c6">HIDE TITLE / FOOTER</li>
+        <li data-i18n="custom.c7">HIDE COLUMNS AND PARTS</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="section__label"><span data-i18n="faq.title">03 — GOOD TO KNOW</span><i></i></div>
+    <div class="faq">
+      <details class="reveal"><summary data-i18n="faq.1.q">Is it really free?</summary><p data-i18n="faq.1.a">Yes. No account, no subscription, no ads. The code is on GitHub if you want to check it or change something.</p></details>
+      <details class="reveal"><summary data-i18n="faq.2.q">Windows says it "protected my PC"</summary><p data-i18n="faq.2.a">The app isn't code-signed (those certificates cost money every year), so SmartScreen can complain the first time you open it. Click "More info" and then "Run anyway".</p></details>
+      <details class="reveal"><summary data-i18n="faq.3.q">Does it touch iRacing or my account?</summary><p data-i18n="faq.3.a">No. It only reads the telemetry iRacing already shares with apps on your PC. It never sends anything to the sim, and the overlays are served from your own computer.</p></details>
+      <details class="reveal"><summary data-i18n="faq.4.q">My iRating doesn't show in AI races</summary><p data-i18n="faq.4.a">iRacing doesn't share it in AI sessions. Once you've done an online session with the app open, it remembers your last iRating and licence and shows those instead.</p></details>
+      <details class="reveal"><summary data-i18n="faq.5.q">Will it hurt my FPS?</summary><p data-i18n="faq.5.a">They're small web pages updating about 30 times a second, so the impact is tiny. If you're tight on performance, only switch on the ones you actually look at.</p></details>
+      <details class="reveal"><summary data-i18n="faq.6.q">Something's broken or I have an idea</summary><p data-i18n="faq.6.a">Open an issue on GitHub or tell me on Twitch. I race with these myself, so there's a good chance I'll want it too.</p></details>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2 class="reveal" data-i18n="final.title">See you on track.</h2>
+    <a class="btn btn--red reveal" style="--d:80ms" data-download href="https://github.com/RaulArcos/rah-iracing-overlay/releases/latest" data-i18n="cta.download">DOWNLOAD FOR WINDOWS</a>
+  </section>
+</main>
+
+<footer class="foot mono">
+  <span data-i18n="foot.made">MADE IN CÁDIZ BY RAÚL ARCOS</span>
+  <nav>
+    <a href="../" data-i18n="nav.portfolio">PORTFOLIO</a>
+    <a href="https://github.com/RaulArcos/rah-iracing-overlay" target="_blank" rel="noopener">GITHUB</a>
+    <a href="https://www.twitch.tv/dizca" target="_blank" rel="noopener">TWITCH</a>
+    <a class="red" href="https://www.paypal.me/raularcosherrera" target="_blank" rel="noopener" data-i18n="foot.coffee">BUY ME A COFFEE</a>
+  </nav>
+</footer>
+
+<dialog id="viewer" class="viewer">
+  <div class="viewer__head">
+    <div><div class="kicker" id="viewer-kicker">01 / 14</div><h3 id="viewer-title">Overlay</h3></div>
+    <button type="button" class="viewer__close" id="viewer-close" aria-label="Close">✕</button>
+  </div>
+  <p id="viewer-desc" class="viewer__desc"></p>
+  <div class="frame frame--viewer">
+    <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br br-"></span>
+    <div class="stage stage--viewer" id="viewer-stage"></div>
+  </div>
+</dialog>
+
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</body>
+</html>

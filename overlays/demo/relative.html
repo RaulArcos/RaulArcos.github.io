@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Relative Overlay</title>
+    <link rel="stylesheet" href="assets/relative/relative.css">
+    <link rel="stylesheet" href="assets/common/css/overlay-theme.css">
+    <link rel="stylesheet" href="assets/common/css/race-system.css">
+    <script src="assets/common/js/overlay_theme.js"></script>
+    <script src="assets/common/js/race_metadata.js"></script>
+    <script src="assets/relative/relative.js"></script>
+    <script src="assets/common/js/socket.io.min.js"></script>
+<script src="assets/common/js/overlay_settings.js"></script>
+<script src="assets/common/js/demo_race.js"></script><script src="assets/common/js/demo_scenario.js"></script><script src="assets/common/js/demo_adapter.js"></script>
+</head>
+<body>
+    <div class="relative-container rah-card rah-race pywebview-drag-region">
+        <div class="header rah-card__header">
+            <span>Relative</span>
+            <span id="player-pos">--</span>
+            <span id="rel-status" class="rah-status">Waiting for data</span>
+        </div>
+        <div class="relative-meta"><span id="rel-conditions">--°C · -- cars</span><span id="rel-sof">SoF --</span></div>
+        <div class="relative-row relative-head" aria-hidden="true">
+            <span>Pos</span><span>Car</span><span>Driver</span><span>Lic / SR</span><span>iR</span><span>±P</span><span>Gap (s)</span>
+        </div>
+        <div id="relative-body"></div>
+        <div class="rah-footer relative-footer">
+            <span id="rel-summary">--</span>
+            <span title="SDK estimated track-location profiles; cross-class times normalized to the player class. Missing timing stays unavailable.">SDK track profile · ±P unavailable without race start</span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "battle_pace",
+    "display_name": "Battle & Pace",
+    "width": 640,
+    "height": 330,
+    "preview": {
+      "original": "assets/battle_pace/images/preview-original.png",
+      "glass": "assets/battle_pace/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "blindspot",
+    "display_name": "BlindSpot",
+    "width": 380,
+    "height": 120,
+    "preview": {
+      "original": "assets/blindspot/images/preview-original.png",
+      "glass": "assets/blindspot/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "broadcast_driver",
+    "display_name": "Broadcast Driver Card",
+    "width": 620,
+    "height": 250,
+    "preview": {
+      "original": "assets/broadcast_driver/images/preview-original.png",
+      "glass": "assets/broadcast_driver/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "delta",
+    "display_name": "Delta",
+    "width": 480,
+    "height": 200,
+    "preview": {
+      "original": "assets/delta/images/preview-original.png",
+      "glass": "assets/delta/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "fuel_finish",
+    "display_name": "Fuel & Finish",
+    "width": 440,
+    "height": 250,
+    "preview": {
+      "original": "assets/fuel_finish/images/preview-original.png",
+      "glass": "assets/fuel_finish/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "input_telemetry",
+    "display_name": "Input Telemetry",
+    "width": 640,
+    "height": 160,
+    "preview": {
+      "original": "assets/input_telemetry/images/preview-original.png",
+      "glass": "assets/input_telemetry/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "laptime_graph",
+    "display_name": "Laptime graph",
+    "width": 540,
+    "height": 620,
+    "preview": {
+      "original": "assets/laptime_graph/images/preview-original.png",
+      "glass": "assets/laptime_graph/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "pit_assistant",
+    "display_name": "Pit Assistant",
+    "width": 560,
+    "height": 300,
+    "preview": {
+      "original": "assets/pit_assistant/images/preview-original.png",
+      "glass": "assets/pit_assistant/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "radar",
+    "display_name": "Radar",
+    "width": 320,
+    "height": 210,
+    "preview": {
+      "original": "assets/radar/images/preview-original.png",
+      "glass": "assets/radar/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "relative",
+    "display_name": "Relative",
+    "width": 480,
+    "height": 340,
+    "preview": {
+      "original": "assets/relative/images/preview-original.png",
+      "glass": "assets/relative/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "session_strip",
+    "display_name": "Session Strip",
+    "width": 820,
+    "height": 130,
+    "preview": {
+      "original": "assets/session_strip/images/preview-original.png",
+      "glass": "assets/session_strip/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "standings",
+    "display_name": "Multiclass Standings",
+    "width": 660,
+    "height": 560,
+    "preview": {
+      "original": "assets/standings/images/preview-original.png",
+      "glass": "assets/standings/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "track_map",
+    "display_name": "Track Map",
+    "width": 360,
+    "height": 360,
+    "preview": {
+      "original": "assets/track_map/images/preview-original.png",
+      "glass": "assets/track_map/images/preview-glass.png"
+    }
+  },
+  {
+    "name": "weather",
+    "display_name": "Weather",
+    "width": 460,
+    "height": 260,
+    "preview": {
+      "original": "assets/weather/images/preview-original.png",
+      "glass": "assets/weather/images/preview-glass.png"
+    }
+  }
+]

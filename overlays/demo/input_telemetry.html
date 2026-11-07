@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAH iRacing Overlay</title>
+    <link rel="stylesheet" href="assets/input_telemetry/input_telemetry.css">
+    <link rel="stylesheet" href="assets/common/css/overlay-theme.css">
+    <link rel="stylesheet" href="assets/common/css/race-system.css">
+    <script src="assets/common/js/overlay_theme.js"></script>
+    <script src="assets/input_telemetry/input_telemetry.js"></script>
+    <script src="assets/common/js/socket.io.min.js"></script>
+<script src="assets/common/js/overlay_settings.js"></script>
+<script src="assets/common/js/demo_race.js"></script><script src="assets/common/js/demo_scenario.js"></script><script src="assets/common/js/demo_adapter.js"></script>
+</head>
+<body>
+    <div class="telemetry-container rah-card rah-race pywebview-drag-region">
+        <div class="rah-card__header"><span>Input telemetry</span><span class="rah-muted">RAH / INPUTS</span></div>
+        <div class="telemetry-content">
+            <div class="it-graph">
+                <canvas id="telemetry-graph" width="300" height="100"></canvas>
+            </div>
+
+            <div class="telemetry-bars">
+                <div class="it-pedal it-pedal--clutch">
+                    <span class="it-pedal__value rah-num" id="clutch-value">0</span>
+                    <div id="clutch-bar" class="bar"><div class="bar-fill" id="clutch-fill"></div></div>
+                    <span class="it-pedal__label">C</span>
+                </div>
+                <div class="it-pedal it-pedal--brake">
+                    <span class="it-pedal__value rah-num" id="brake-value">0</span>
+                    <div id="brake-bar" class="bar"><div class="bar-fill" id="brake-fill"></div></div>
+                    <span class="it-pedal__label">B</span>
+                </div>
+                <div class="it-pedal it-pedal--throttle">
+                    <span class="it-pedal__value rah-num" id="throttle-value">0</span>
+                    <div id="throttle-bar" class="bar"><div class="bar-fill" id="throttle-fill"></div></div>
+                    <span class="it-pedal__label">T</span>
+                </div>
+            </div>
+
+            <div class="telemetry-right">
+                <div class="gear-steering-container">
+                    <div class="gear-speed-container">
+                        <div id="gear-display">—</div>
+                        <div id="speed-display">— km/h</div>
+                    </div>
+                    <div class="it-wheel">
+                        <img src="assets/input_telemetry/images/steering_wheel.png" alt="Steering Wheel" id="steering-wheel" class="steering-wheel-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

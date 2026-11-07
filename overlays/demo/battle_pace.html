@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battle &amp; Pace Overlay</title>
+    <link rel="stylesheet" href="assets/battle_pace/battle_pace.css">
+    <link rel="stylesheet" href="assets/common/css/overlay-theme.css">
+    <link rel="stylesheet" href="assets/common/css/race-system.css">
+    <script src="assets/common/js/overlay_theme.js"></script>
+    <script src="assets/battle_pace/battle_pace.js"></script>
+    <script src="assets/common/js/socket.io.min.js"></script>
+<script src="assets/common/js/overlay_settings.js"></script>
+<script src="assets/common/js/demo_race.js"></script><script src="assets/common/js/demo_scenario.js"></script><script src="assets/common/js/demo_adapter.js"></script>
+</head>
+<body>
+    <div class="battle-container rah-card rah-race pywebview-drag-region">
+        <div class="rah-card__header">
+            <span>Head to Head <span id="bp-class">--</span></span>
+            <span id="bp-status" class="rah-status rah-status--warn">Waiting for data</span>
+        </div>
+        <div class="battle-grid">
+            <div class="bp-col bp-ahead">
+                <span class="rah-metric__label">Ahead</span>
+                <span class="rah-metric__value bp-name" id="bp-ahead-name">--</span>
+                <span class="rah-num bp-pos" id="bp-ahead-pos">--</span>
+                <div class="rah-row"><span>Gap</span><span class="rah-num" id="bp-ahead-gap">--</span></div>
+                <div class="rah-row"><span>Last lap</span><span class="rah-num" id="bp-ahead-last">--</span></div>
+                <div class="rah-row"><span>Δ last</span><span class="rah-num rah-status" id="bp-ahead-dlast">--</span></div>
+                <div class="rah-row"><span>Best lap</span><span class="rah-num" id="bp-ahead-best">--</span></div>
+                <div class="rah-row"><span>Δ best</span><span class="rah-num rah-status" id="bp-ahead-dbest">--</span></div>
+                <div class="rah-row"><span>Avg pace</span><span class="rah-num" id="bp-ahead-pace">--</span></div>
+                <div class="rah-row"><span>Δ pace</span><span class="rah-num rah-status" id="bp-ahead-dpace">--</span></div>
+                <div class="rah-row"><span>Trend</span><span class="rah-num" id="bp-ahead-trend">--</span></div>
+            </div>
+            <div class="bp-comparison"><span>YOU vs AHEAD · RECENT LAPS</span><div id="bp-ahead-recent" class="bp-chips rah-num"></div></div>
+            <div class="bp-col bp-player rah-player">
+                <span class="rah-metric__label">You</span>
+                <span class="rah-metric__value bp-name" id="bp-player-name">--</span>
+                <span class="rah-num bp-pos" id="bp-player-pos">--</span>
+                <div class="rah-row"><span>Last lap</span><span class="rah-num" id="bp-player-last">--</span></div>
+                <div class="rah-row"><span>Best lap</span><span class="rah-num" id="bp-player-best">--</span></div>
+                <div class="rah-row"><span>Avg pace</span><span class="rah-num" id="bp-player-pace">--</span></div>
+                <div class="rah-row"><span>Trend</span><span class="rah-num" id="bp-player-trend">--</span></div>
+            </div>
+            <div class="bp-comparison"><span>YOU vs BEHIND · RECENT LAPS</span><div id="bp-behind-recent" class="bp-chips rah-num"></div></div>
+            <div class="bp-col bp-behind">
+                <span class="rah-metric__label">Behind</span>
+                <span class="rah-metric__value bp-name" id="bp-behind-name">--</span>
+                <span class="rah-num bp-pos" id="bp-behind-pos">--</span>
+                <div class="rah-row"><span>Gap</span><span class="rah-num" id="bp-behind-gap">--</span></div>
+                <div class="rah-row"><span>Last lap</span><span class="rah-num" id="bp-behind-last">--</span></div>
+                <div class="rah-row"><span>Δ last</span><span class="rah-num rah-status" id="bp-behind-dlast">--</span></div>
+                <div class="rah-row"><span>Best lap</span><span class="rah-num" id="bp-behind-best">--</span></div>
+                <div class="rah-row"><span>Δ best</span><span class="rah-num rah-status" id="bp-behind-dbest">--</span></div>
+                <div class="rah-row"><span>Avg pace</span><span class="rah-num" id="bp-behind-pace">--</span></div>
+                <div class="rah-row"><span>Δ pace</span><span class="rah-num rah-status" id="bp-behind-dpace">--</span></div>
+                <div class="rah-row"><span>Trend</span><span class="rah-num" id="bp-behind-trend">--</span></div>
+            </div>
+        </div>
+        <div class="battle-footer rah-footer">
+            <span id="bp-basis">--</span>
+            <span class="battle-note">Recent laps, not sectors · oldest → latest. Δ other minus you: − they are faster, + you are faster. -- unpaired.</span>
+        </div>
+    </div>
+</body>
+</html>

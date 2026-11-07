@@ -29,6 +29,14 @@ Personal portfolio with an always-visible **Racing Lab**: Cádiz City, Spa-Franc
 
 For same-browser tab sharing, use exactly the same origin in both tabs—do not mix `localhost` and `127.0.0.1`. The server relay also supports separate browsers. Both players must press **Start** on the same track. Quit removes a car; stale sessions expire after 15 seconds.
 
+## Overlays page
+
+`overlays/` is a standalone page for the RAH iRacing overlays (<https://raularcos.github.io/overlays/>): download button, EN/ES copy and every overlay running live on simulated data. It shares the `rah-lang` language preference with the portfolio and has no build step or dependencies.
+
+- `overlays/index.html`, `page.css`, `page.js`: the page. The overlay list and the EN/ES text live in `page.js`.
+- `overlays/demo/`: static exports of the overlay demos (HTML, CSS, JS, fonts, preview PNGs). Regenerate them from the overlay repo with `python scripts/build_web_demo.py <path-to-this-repo>/overlays`, then commit.
+- The download buttons point to the latest GitHub release of `RaulArcos/rah-iracing-overlay`; the page asks the GitHub API for the version and zip link and falls back to the releases page.
+
 ## Files and load order
 
 `index.html` loads `racing-config.js`, `racing-core.js`, `racing-live.js`, `racing-game.js`, then `racing-lab.js`, with versioned URLs. `racing-lab.css` is in the head. The inert `#racing-lab-template` is outside `<x-dc>`; the runtime mounts it at `#racing-lab-slot`.

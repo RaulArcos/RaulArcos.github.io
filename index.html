@@ -67,6 +67,7 @@
     </div>
     <nav class="rah-nav" style="display: flex; align-items: center; gap: 28px;">
       <a href="#racing-lab" data-i18n="nav.racing" style="color: #E2483D; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">RACING LAB</a>
+      <a href="overlays/" data-i18n="nav.overlays" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">OVERLAYS</a>
       <a href="#experience" data-i18n="nav.experience" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">EXPERIENCE</a>
       <a href="#projects" data-i18n="nav.projects" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">PROJECTS</a>
       <a href="#timeline" data-i18n="nav.timeline" style="color: #9A9A95; text-decoration: none; letter-spacing: 0.12em;" style-hover="color: #EDEDEA;">TIMELINE</a>
@@ -225,10 +226,10 @@
         </div>
       </a>
 
-      <a href="https://github.com/RaulArcos" target="_blank" rel="noopener" data-rh data-rh-delay="80" style="transition: border-color 0.3s, transform 0.25s; display: block; text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.13); background: #0E0E10; padding: 34px;" style-hover="border-color: rgba(226,72,61,0.65); transform: translateY(-5px);">
+      <a href="overlays/" data-rh data-rh-delay="80" style="transition: border-color 0.3s, transform 0.25s; display: block; text-decoration: none; color: inherit; border: 1px solid rgba(255,255,255,0.13); background: #0E0E10; padding: 34px;" style-hover="border-color: rgba(226,72,61,0.65); transform: translateY(-5px);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em;">
           <span style="color: #E2483D;">P2</span>
-          <span style="color: #76766F;">OPEN SOURCE</span>
+          <span style="color: #E2483D;" data-i18n="proj.overlays.cta">FREE DOWNLOAD →</span>
         </div>
         <h3 style="font-family: Antonio, sans-serif; font-size: 36px; font-weight: 600; text-transform: uppercase; margin: 0 0 12px; letter-spacing: 0.01em;">iRacing Overlays</h3>
         <p data-i18n="proj.overlays.desc" style="font-size: 14.5px; line-height: 1.65; color: #9A9A95; margin: 0 0 24px; text-wrap: pretty;">Open-source Python web app that streams live iRacing data into customisable overlays — on screen or in the browser, ready for OBS. Built so new overlays are trivial to add.</p>
@@ -696,6 +697,8 @@ const RAH_I18N = {
     'proj.title': '02 — PROJECTS',
     'proj.sub': 'PROJECTS',
     'proj.irc.desc': 'An AI race engineer for iRacing you actually talk to — realtime, multilingual voice conversation mid-stint. Shipped as a paid desktop app with backend, payments and web, end to end.',
+    'proj.overlays.cta': 'FREE DOWNLOAD →',
+    'nav.overlays': 'OVERLAYS',
     'proj.overlays.desc': 'Open-source Python web app that streams live iRacing data into customisable overlays — on screen or in the browser, ready for OBS. Built so new overlays are trivial to add.',
     'proj.telemetry.desc': "Formula Gades' first live telemetry and datalogging system: CAN reads from the ECU, an ESP32 pushing MQTT packets over LTE, visualised in a Node-RED web service.",
     'proj.robot.desc': 'A ROS-based autonomous differential-drive robot: LIDAR mapping and navigation, YOLOv7 + OpenCV to see and interact with people, and a web interface to watch it think.',
@@ -770,6 +773,8 @@ const RAH_I18N = {
     'proj.title': '02 — PROYECTOS',
     'proj.sub': 'PROYECTOS',
     'proj.irc.desc': 'Un ingeniero de carreras con IA con el que hablas de verdad — conversación de voz en tiempo real y multilingüe durante la vuelta. Lanzado como app de escritorio de pago con backend, pagos y web, de principio a fin.',
+    'proj.overlays.cta': 'DESCARGA GRATIS →',
+    'nav.overlays': 'OVERLAYS',
     'proj.overlays.desc': 'App web open-source en Python que transmite datos de iRacing en tiempo real a overlays personalizables — en pantalla o en el navegador, lista para OBS. Diseñada para que añadir nuevos overlays sea trivial.',
     'proj.telemetry.desc': 'El primer sistema de telemetría y datalogging en tiempo real de Formula Gades: lecturas CAN de la ECU, un ESP32 enviando paquetes MQTT por LTE, visualizado en un servicio web Node-RED.',
     'proj.robot.desc': 'Un robot autónomo de tracción diferencial basado en ROS: mapeo y navegación con LIDAR, YOLOv7 + OpenCV para detectar e interactuar con personas, e interfaz web para visualizar su razonamiento.',
